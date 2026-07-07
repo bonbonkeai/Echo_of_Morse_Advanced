@@ -116,7 +116,52 @@ scripts/                     development helper scripts
 - `RadioLobbyPresence` / `RadioReadyQueue`: lobby presence and ready queue state.
 - `RadioGameSession` / `RadioSessionPlayer`: multiplayer sessions and player results.
 
+## Makefile usage
+
+The Makefile wraps the common Docker Compose workflows. Run it from the `Echo_of_Morse/` directory. On systems where `podman-compose` is available, it is used automatically; otherwise the Makefile falls back to `docker compose`.
+
+### Development
+
+- `make dev`: start the development stack in detached mode
+- `make dev-logs`: start the development stack in the foreground and stream logs
+- `make down`: stop the development stack
+- `make rebuild`: rebuild and restart the development stack
+- `make re`: stop the development stack, remove volumes, and recreate it from scratch
+
+### Production
+
+- `make prod`: generate HTTPS certificates, rebuild images, and start production
+- `make up`: start the production stack without rebuilding
+- `make stop`: stop the production stack
+- `make prod-down`: alternate target for stopping production
+- `make prod-logs`: stream production logs
+- `make ps`: show container status
+- `make logs`: follow production logs
+
+### Database
+
+- `make db-init`: run Prisma migrations and seed data in the development stack
+- `make seed`: run the production seed command
+- `make reset-db`: reset the development database volume
+
+### Tests
+
+- `make test`: run the concurrent WebSocket integration test
+- `make test-clean`: clean transient radio test state
+- `make clean-test` or `make clean`: aliases for `make test-clean`
+
+### Code quality and utilities
+
+- `make typecheck`: run TypeScript type checking
+- `make lint`: run ESLint
+- `make check`: run both type checking and linting
+- `make kill-port`: stop local processes on ports 3000, 3001, and 5432
+- `make fclean`: remove containers, volumes, and related Podman state
+- `make reset`: perform a full local environment reset
+
 ## Local setup
+
+If you prefer running the tools directly:
 
 Install dependencies:
 
