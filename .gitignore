@@ -1,0 +1,57 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/ws-server/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+app/.DS_Store
+app/api/.DS_Store
+srcs/.DS_Store
+srcs/components/.DS_Store
+*.pem
+# Certificats SSL générés par make prod — ne pas committer les clés privées
+certs/
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+# exception — commité pour que l'évaluateur puisse configurer son environnement
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Vault — données chiffrées et tokens (ne jamais committer)
+vault/data/
+
+
+#prisma
+srcs/generated/prisma

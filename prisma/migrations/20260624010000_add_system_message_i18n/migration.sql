@@ -1,0 +1,3 @@
+ALTER TABLE "SystemMessage"
+ADD COLUMN "i18nKey" TEXT,
+ADD COLUMN "i18nParams" JSONB;

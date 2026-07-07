@@ -1,0 +1,239 @@
+/* ========================================= global ========================================= */
+/* laisse un espace en bas */
+.profileHeader {
+	margin-bottom: 20px; /* laisse une espace */
+}
+
+/* pour avatar/username/email/edit boutton */
+.heroHeader {
+	display: flex;
+	align-items: center; /* centrer verticalement */
+	gap: 20px;
+	flex-wrap: wrap;	/* pour sauter une ligne losque ecran est petit*/
+}
+
+/* pour des blocs dans cette carte*/
+.profileCard {
+  display: grid;  /* utilisation de la grille 网格 */
+  gap: 24px;		/* espace entre les éléments */
+}
+
+/* pour separer: Bio、Stats、Connected accounts */
+.profileSection {
+  display: grid;
+  gap: 12px;
+  padding-top: 20px; /*laisse des espace pour le cotenue et la ligne*/
+  border-top: 1px solid #e5e7eb; /*la ligne separee*/
+}
+
+/* titre du chaque bloc */
+.sectionTitle {
+  margin: 0;
+  color: #111827;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* mode pour le text du biogranphie */
+.bio {
+  margin: 0;
+  color: #4b5563;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* pour les 4 petites cartes */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+/* mode pour les petite cartes */
+.statItem {
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f9fafb;
+}
+
+.editFields {
+  display: grid;
+  gap: 20px;
+}
+
+/* ========================================= bloc: connecter ========================================= */
+/* conteneur des info connecte */
+.connectedList {
+  display: grid;
+  gap: 10px;
+}
+
+/* mode pour chaque conteneur */
+.connectedRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /*coller sur deux cotes*/
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f9fafb;
+}
+
+.providerName {
+	display: block;
+	color: #111827;
+	font-size: 16px;
+	font-weight: 800;
+}
+
+.providerDescription {
+	margin: 4px 0 0 0;
+	color: #6b7280;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+/* ========================================= bloc: avatar ========================================= */
+/* conteneur avatar */
+.avatarBlock {
+	display: grid;
+	gap: 10px;
+	justify-items: center;
+	flex: 0 0 auto;
+}
+
+/* avatar */
+.avatar {
+	display: grid;
+	place-items: center; 				/* centre les éléments horizontalement et verticalement */
+	flex: 0 0 auto; 					/* empêche l'avatar de se redimensionner, maintenir le height et width */
+	width: 96px;
+	height: 96px;
+	border: 1px solid #111827;		/* bordure sombre*/
+	border-radius: 16px; 				/* coins arrondis */
+	background: #111827;
+	color: #ffffff;
+	font-size: 42px;					/* taille du texte */
+	font-weight: 800;					/* l’épaisseur du texte */	
+	overflow: hidden;					/* empêche le contenu de dépasser les limites de l'avatar, utile pour les images */
+}
+
+.avatarImage {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;			/* assure que l'image remplit l'avatar sans déformation, en coupant les parties qui dépassent */
+}
+
+.fileButton {
+	color: #4b5563;
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;			/* indique que c'est cliquable */
+}
+
+.fileButton:hover {
+	color: #111827;
+}
+
+.fileInput {
+	display: none;			/* cache l'input de fichier, on utilise le label pour déclencher l'action de sélection de fichier */
+}
+
+/* ========================================= bloc: info user ========================================= */
+/* informations sur l'utilisateur */
+.identity {
+	flex: 1 1 240px;			/* prendre 240px, s'il n'y a pas assez de l'espace disponible -> reduire */
+	min-width: 0;				/* permet au texte de se réduire et d’utiliser l’espace disponible */
+}
+
+/* titre d'utilisateur */
+.title {
+	margin: 0; 			/* pas de marge pour le titre */
+	color: #111827;
+	font-size: 40px;
+	font-weight: 800;
+}
+
+/* email de l'utilisateur */
+.email {
+	margin: 8px 0 0 0;
+	color: #4b5563;
+	font-size: 16px;
+	overflow-wrap: anywhere; /* permet de casser les mots longs pour éviter le débordement */
+}
+
+/* ========================================= bloc: stats ========================================= */
+/* small labels */
+.metaLabel {
+	display: block;			/* L’élément prend toute la largeur disponible et passe à la ligne. */
+	margin-bottom: 6px;		/* espace entre le label et la valeur */
+	color: #6b7280;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+/* small values */
+.metaValue {
+	display: block;
+	color: #111827;
+	font-size: 18px;
+	font-weight: 800;
+}
+
+/* ========================================= bouton éditer ========================================= */
+/* lien pour éditer le profil */
+.editLink {
+	margin-left: auto;  	/* pousse le lien vers la droite */
+	text-decoration: none;	/* pas de soulignement */
+}
+
+.editForm {
+	display: grid;
+	gap: 24px;
+}
+
+.saveActions {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.errorText {
+	margin: 0;
+	color: #b91c1c;
+	font-size: 14px;
+	font-weight: 700;
+}
+
+/* ========================================= mobile ========================================= */
+
+@media (max-width: 620px) {
+	.heroHeader {
+		align-items: flex-start;
+	}
+
+	.statsGrid {
+		grid-template-columns: 1fr;
+	}
+	.avatar {
+		width: 72px;
+		height: 72px;
+		border-radius: 14px;
+		font-size: 32px;
+	}
+
+	.title {
+		font-size: 32px;
+	}
+
+	.editLink,
+	.saveActions button,
+	.editLink button {
+		width: 100%;
+	}
+
+	.saveActions {
+		justify-content: stretch;
+	}
+}

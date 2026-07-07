@@ -1,0 +1,18 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy dependency files first (for caching)
+COPY package.json package-lock.json ./
+
+# Install dependencies in deterministic way
+RUN npm ci
+
+# Copy project source
+COPY . .
+
+# Expose Next.js dev port
+EXPOSE 3000
+
+# Start dev server
+CMD ["npm", "run", "dev"]

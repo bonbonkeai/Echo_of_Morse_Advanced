@@ -1,0 +1,48 @@
+.title {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.description {
+  margin: 0 0 24px 0;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.form {
+  display: grid;
+  gap: 20px;
+}
+
+.fields {
+  display: grid;
+  gap: 16px;
+}
+
+.error {
+  margin: 0;
+  color: #b91c1c;
+  line-height: 1.5;
+}
+
+.success {
+  margin: 0;
+  color: #166534;
+  line-height: 1.5;
+}
+
+.registerText {
+  margin-top: 20px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4b5563;
+  text-align: center;
+}
+
+.registerLink {
+  color: #111827;
+  font-weight: 700;
+  text-decoration: none;
+}

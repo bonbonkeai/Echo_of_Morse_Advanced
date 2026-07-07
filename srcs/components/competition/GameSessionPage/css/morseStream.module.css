@@ -1,0 +1,53 @@
+/* ======================== MorseStream: 中央摩斯信号显示区域 ======================== */
+
+.streamPanel {
+	display: flex;
+	flex-direction: column;
+	height: 220px;
+	gap: 14px;
+	padding: 22px;
+	border: 1px solid #e5e5e5;
+	border-radius: 18px;
+	background: #ffffff;
+	box-shadow: 0 18px 42px rgba(0, 0, 0, 0.05);
+	text-align: left;
+	overflow: hidden;
+}
+
+.streamLabel {
+	margin: 0;
+	color: #666666;
+	font-size: 0.78rem;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+.morseText {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	flex: 1;
+	padding: 22px 20px;
+	border: 1px solid #eeeeee;
+	border-radius: 12px;
+	background: #fafafa;
+	color: #111111;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+	font-size: clamp(1.15rem, 2vw, 1.55rem);
+	font-weight: 850;
+	line-height: 1.45;
+	white-space: nowrap;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	scrollbar-gutter: stable;
+}
+
+.hiddenText {
+	justify-content: center;
+}
+
+.streamHint {
+	color: #777777;
+	font-size: 0.78rem;
+	font-weight: 700;
+}

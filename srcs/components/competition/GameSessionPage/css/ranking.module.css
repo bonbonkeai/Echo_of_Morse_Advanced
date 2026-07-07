@@ -1,0 +1,143 @@
+.ranking {
+	display: grid;
+	gap: 18px;
+	padding: 22px;
+	border: 1px solid #e5e5e5;
+	border-radius: 24px;
+	background: #ffffff;
+	box-shadow: 0 18px 42px rgba(0, 0, 0, 0.05);
+}
+
+/* ---------- tableau ranking ---------- */
+.rankingTable {
+	overflow: hidden;
+	border: 1px solid #eeeeee;
+	border-radius: 18px;
+	background: #fafafa;
+}
+
+/* style de titre */
+.title {
+	margin: 0;
+	color: #111111;
+	font-size: 1.2rem;
+	font-weight: 900;
+}
+
+/* style de données et titre */
+.rankingHeader,		/* titre: rank/player/score */
+.rankItem {			/* donnees pour chaque rang */	
+	display: grid;										/* css grid */
+	align-items: center;								
+}
+
+/* ranking pour la page gameSession */
+.liveRanking .rankingHeader,
+.liveRanking .rankItem {
+	grid-template-columns: 32px minmax(0, 1fr) 64px 52px;	/* largeur des colonnes（rank, player, score, %） */
+	column-gap: 16px;									/* espace entre les colonnes */
+	padding: 0 10px 0 10px;								/* padding: top right bottom left */
+}
+
+/* ranking de resultats */
+.finalranking .rankingHeader,
+.finalranking .rankItem {
+	grid-template-columns: 46px minmax(0, 1fr) 90px 90px;
+	column-gap: 24px;
+	padding: 0 30px 0 10px;
+}
+
+/* espace pour la gauche de 2e colone */
+.rankingHeader span:nth-child(2),
+.rankItem strong {
+	margin-left: 10px;
+}
+
+.rankingHeader {
+	min-height: 48px;
+	border-bottom: 1px solid #eeeeee;
+	background: #f5f5f5;
+	color: #555555;
+	font-size: 0.78rem;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+
+.rankList {
+	display: grid;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.rankItem {
+	min-height: 66px;
+	border-bottom: 1px solid #eeeeee;
+	background: #ffffff;
+}
+
+/*  */
+.rankItem:last-child {
+	border-bottom: 0;
+}
+
+.rankItem strong {
+	color: #111111;
+	font-size: 1rem;
+	font-weight: 850;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.rank,
+.score,
+.accuracy {
+	font-size: 1.05rem;
+	font-weight: 900;
+}
+
+.rank {
+	color: #555555;
+	font-size: 1.05rem;
+	font-weight: 900;
+}
+
+.score,
+.accuracy {
+	justify-self: end;
+	text-align: right;
+	color: #111111;
+}
+
+.rankWinner {
+	background: #f8fff8;
+}
+
+.rankWinner .rank,
+.rankWinner strong,
+.rankWinner .score,
+.rankWinner .accuracy {
+	color: #0f8f40;
+}
+
+.rankingHeader span:nth-child(3),
+.rankingHeader span:last-child{
+	justify-self: end;
+	text-align: right;
+}
+
+.rankingHeader span:last-child {
+	font-weight: 950;
+}
+
+.rankWinner .rank {
+	font-size: 1.15rem;
+	line-height: 1;
+}
+
+.rankingHeader span:first-child,
+.rank {
+	justify-self: center;
+	text-align: center;
+}

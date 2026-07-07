@@ -1,0 +1,19 @@
+.card {
+  width: 100%;
+  padding: 28px 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background-color: #ffffff;
+  color: #111827;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.default {
+  max-width: none;
+}
+
+.narrow {
+  max-width: 480px;
+  margin: 0 auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}

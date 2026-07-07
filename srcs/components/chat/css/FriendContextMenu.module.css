@@ -1,0 +1,46 @@
+.menu {
+  position: fixed;
+  z-index: 1000;
+  min-width: 160px;
+  padding: 6px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+}
+
+.item,
+.deleteItem {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #111827;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+}
+
+.item:hover {
+  background: #f3f4f6;
+}
+
+.deleteItem {
+  color: #b91c1c;
+}
+
+.deleteItem:hover {
+  background: #fee2e2;
+}
+
+
+.item:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.item:disabled:hover {
+  background: transparent;
+}

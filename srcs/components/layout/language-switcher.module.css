@@ -1,0 +1,11 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button {
+  min-width: 48px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}

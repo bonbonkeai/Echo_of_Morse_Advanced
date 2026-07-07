@@ -1,0 +1,1 @@
+export const RADIO_LOBBY_MAX_USERS = 7;

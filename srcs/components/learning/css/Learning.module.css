@@ -1,0 +1,750 @@
+.learningPage {
+  width: 100%;
+  min-height: calc(100vh - 96px);
+  padding: 2px 0 48px;
+  color: var(--foreground);
+  background: var(--background);
+}
+
+.learningContainer {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+}
+
+.hero {
+  margin-bottom: 26px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #666666;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: #111111;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1;
+  font-weight: 800;
+}
+
+.description {
+  max-width: 680px;
+  margin: 16px 0 0;
+  color: #555555;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Learning intro */
+
+.learningIntro {
+  display: grid;
+  gap: 24px;
+}
+
+.learningIntroHeader {
+  display: grid;
+  gap: 12px;
+}
+
+.learningIntroFrame {
+  display: grid;
+  width: min(760px, 100%);
+  gap: 12px;
+  margin: 0 auto;
+  padding: 22px 24px;
+  border: 1px solid #e5e5e5;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.05);
+  justify-items: center;
+  text-align: center;
+}
+
+.learningPreviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+}
+
+.learningPreviewCard {
+  display: flex;
+  min-height: 280px;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #e6e6e6;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.learningPreviewCard:hover {
+  border-color: #cfd8ff;
+}
+
+.learningPreviewCardRevealed {
+  border-color: #cfd8ff;
+  box-shadow: 0 16px 38px rgba(24, 39, 116, 0.08);
+}
+
+.learningPreviewCardBody {
+  display: grid;
+  flex: 1;
+  gap: 12px;
+  align-content: center;
+  justify-items: center;
+  padding: 28px 22px 18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.learningPreviewCard:focus-within {
+  outline: 2px solid #111111;
+  outline-offset: 3px;
+}
+
+.learningPreviewBulbButton:focus-visible,
+.learningPreviewPlayButton:focus-visible {
+  outline: 2px solid #111111;
+  outline-offset: 3px;
+}
+
+.learningPreviewCharacter {
+  color: #111111;
+  font-size: 2.8rem;
+  line-height: 1;
+  font-weight: 850;
+}
+
+.learningPreviewHint {
+  color: #666666;
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.learningPreviewBulbButton {
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.learningPreviewBulb {
+  position: relative;
+  width: 52px;
+  height: 66px;
+  border: 1px solid #d8d8d8;
+  border-radius: 18px 18px 20px 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+}
+
+.learningPreviewBulb::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  width: 28px;
+  height: 28px;
+  border: 2px solid #d8d8d8;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.learningPreviewBulb::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 18px;
+  height: 10px;
+  border-radius: 4px;
+  background: #d8d8d8;
+  transform: translateX(-50%);
+}
+
+.learningPreviewBulbOn {
+  border-color: #f2c94c;
+  background: linear-gradient(180deg, #fff8d4 0%, #ffe680 100%);
+  box-shadow: 0 0 26px rgba(242, 201, 76, 0.45);
+  transform: scale(1.04);
+}
+
+.learningPreviewBulbOn::before {
+  border-color: #a97d00;
+  border-bottom-color: transparent;
+}
+
+.learningPreviewBulbOn::after {
+  background: #a97d00;
+}
+
+.learningPreviewCode {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: 0.14em;
+}
+
+.learningPreviewCodeHidden {
+  color: #666666;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.learningPreviewCodeVisible {
+  color: #0f0f0f;
+  font-size: 1.38rem;
+  font-weight: 950;
+  letter-spacing: 0.2em;
+  text-shadow: 0 0 0.01px currentColor;
+}
+
+.learningPreviewMorseText {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.learningPreviewMorseHidden {
+  display: inline-block;
+  color: #666666;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.learningPreviewPlayButton {
+  margin: 0 22px 22px;
+  min-height: 40px;
+  border: 1px solid #e5e5e5;
+  border-radius: 999px;
+  background: #fafafa;
+  color: #111111;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.learningPreviewPlayButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.learningPreviewPlayRow {
+  display: flex;
+  justify-content: center;
+  margin: 0 22px 22px;
+}
+
+.learningPreviewPlayRow .learningPreviewPlayButton {
+  margin: 0;
+  min-width: 180px;
+}
+
+.learningIntroActions {
+  display: flex;
+  justify-content: center;
+}
+
+.learningIntroActions .primaryButton {
+  min-width: 200px;
+}
+
+/* Progress card */
+
+.progressCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 28px;
+  padding: 28px;
+  border: 1px solid #e5e5e5;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.06);
+}
+
+.cardLabel {
+  margin: 0 0 10px;
+  color: #666666;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.progressTitle {
+  margin: 0;
+  color: #111111;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1;
+  font-weight: 800;
+}
+
+.cardText {
+  margin: 12px 0 0;
+  color: #555555;
+  line-height: 1.6;
+}
+
+.progressStats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 12px;
+  width: min(320px, 100%);
+  margin: 0;
+}
+
+.progressStats div {
+  padding: 16px;
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+  background: #fafafa;
+}
+
+.progressStats dt {
+  color: #666666;
+  font-size: 0.78rem;
+}
+
+.progressStats dd {
+  margin: 8px 0 0;
+  color: #111111;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+/* Learning home entry cards */
+
+.entryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.entryCard {
+  display: flex;
+  min-height: 230px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  border: 1px solid #e5e5e5;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.05);
+}
+
+.entryTitle {
+  margin: 0;
+  color: #111111;
+  font-size: 1.55rem;
+  font-weight: 800;
+}
+
+/* Buttons and links */
+
+.primaryButton,
+.secondaryButton,
+.disabledButton {
+  display: inline-flex;
+  min-height: 44px;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  margin-top: 22px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 750;
+  text-decoration: none;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.primaryButton {
+  border: 1px solid #111111;
+  background: #111111;
+  color: #ffffff;
+}
+
+.primaryButton:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.secondaryButton {
+  border: 1px solid #111111;
+  background: #ffffff;
+  color: #111111;
+}
+
+.secondaryButton:hover {
+  background: #111111;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.disabledButton {
+  border: 1px solid #dddddd;
+  background: #f2f2f2;
+  color: #999999;
+  cursor: not-allowed;
+}
+
+.primaryButton:focus-visible,
+.secondaryButton:focus-visible,
+.disabledButton:focus-visible,
+.link:focus-visible {
+  outline: 2px solid #111111;
+  outline-offset: 3px;
+}
+
+/* Breadcrumb */
+
+.breadcrumb {
+  margin-bottom: 10px;
+  color: #111111;
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.link {
+  color: #111111;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbCurrent {
+  color: #111111;
+  font-weight: 500;
+}
+
+/* Level directory */
+
+.levelGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.levelCard {
+  display: flex;
+  min-height: 260px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22px;
+  border: 1px solid #e5e5e5;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.05);
+}
+
+.levelCardLocked {
+  opacity: 0.58;
+}
+
+.levelTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.levelTitle {
+  margin: 0;
+  color: #111111;
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.statusBadge {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  padding: 0 10px;
+  border: 1px solid #dddddd;
+  border-radius: 999px;
+  background: #f5f5f5;
+  color: #333333;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.statusBadgeLocked {
+  background: #eeeeee;
+  color: #888888;
+}
+
+.characterList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.characterPill {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  padding: 0 10px;
+  border: 1px solid #e5e5e5;
+  border-radius: 999px;
+  background: #fafafa;
+  color: #111111;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.88rem;
+}
+
+.levelMeta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  margin: 20px 0 0;
+}
+
+.metaBox {
+  display: grid;
+  align-content: center;
+  min-height: 72px;
+  padding: 14px 16px;
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+  background: #fafafa;
+}
+
+.metaLabel {
+  margin: 0;
+  color: #666666;
+  font-size: 0.78rem;
+}
+
+.metaValue {
+  margin: 7px 0 0;
+  color: #111111;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+/* Character progress chart */
+
+.letterChartCard {
+  display: grid;
+  gap: 22px;
+  margin-top: 24px;
+  padding: 28px;
+  border: 1px solid #e5e5e5;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.05);
+}
+
+.letterChartHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.verticalChartWrapper {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 12px;
+  min-height: 260px;
+}
+
+.verticalChartScale {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px 0 46px;
+  color: #777777;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.verticalChartScroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 14px;
+  scrollbar-width: thin;
+  scrollbar-color: #111111 #e5e5e5;
+  box-shadow: inset -18px 0 18px -18px rgba(0, 0, 0, 0.28);
+}
+
+.verticalChartScroll::-webkit-scrollbar {
+  height: 10px;
+}
+
+.verticalChartScroll::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: #e5e5e5;
+}
+
+.verticalChartScroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #111111;
+}
+
+.verticalChartScroll::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+}
+
+.verticalChart {
+  display: flex;
+  min-width: max-content;
+  height: 260px;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 18px 8px 0;
+  border-left: 1px solid #eeeeee;
+  border-bottom: 1px solid #dddddd;
+  background:
+    linear-gradient(to top, #eeeeee 1px, transparent 1px) 0 0 / 100% 25%;
+}
+
+.verticalChartItem {
+  display: grid;
+  width: 42px;
+  height: 100%;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.verticalChartBarArea {
+  position: relative;
+  display: flex;
+  height: 190px;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.verticalChartBar {
+  width: 24px;
+  min-height: 2px;
+  border-radius: 999px 999px 4px 4px;
+  background: #111111;
+}
+
+.verticalChartValue {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  color: #555555;
+  font-size: 0.68rem;
+  font-weight: 800;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.verticalChartLabel {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  min-height: 42px;
+}
+
+.verticalChartLabel strong {
+  color: #111111;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.verticalChartLabel span {
+  color: #777777;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.chartScrollHint {
+  margin: -8px 0 0;
+  color: #666666;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .progressCard {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .progressStats {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .entryGrid,
+  .levelGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .learningPage {
+    padding: 32px 16px;
+  }
+
+  .progressStats {
+    grid-template-columns: 1fr;
+  }
+
+  .levelMeta {
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+  }
+
+  .letterChartCard {
+    padding: 20px;
+  }
+
+  .letterChartHeader {
+    flex-direction: column;
+  }
+
+  .verticalChartWrapper {
+    grid-template-columns: 40px minmax(0, 1fr);
+  }
+
+  .verticalChartItem {
+    width: 38px;
+  }
+
+  .verticalChartBar {
+    width: 22px;
+  }
+}

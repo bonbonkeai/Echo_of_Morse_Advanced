@@ -1,0 +1,37 @@
+.composer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+  padding: 16px 20px;
+  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.textarea {
+  width: 100%;
+  resize: none;
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  color: #111827;
+  font: inherit;
+  line-height: 1.5;
+  outline: none;
+}
+
+.textarea:focus {
+  border-color: #111827;
+}
+
+.inputArea {
+  display: grid;
+  gap: 6px;
+}
+
+.error {
+  margin: 0;
+  color: #b91c1c;
+  font-size: 13px;
+  line-height: 1.4;
+}

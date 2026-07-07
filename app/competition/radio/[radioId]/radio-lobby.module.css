@@ -1,0 +1,315 @@
+.page {
+  width: 100%;
+  color: #111827;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.leftColumn {
+  display: grid;
+  gap: 24px;
+}
+
+.rightColumn {
+  display: flex;
+  min-height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-end;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #111827;
+}
+
+.backLink {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: #111827;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.kicker {
+  margin: 0 0 10px;
+  color: #4b5563;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: #111827;
+  font-size: clamp(36px, 5vw, 68px);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.description {
+  max-width: 680px;
+  margin: 18px 0 0;
+  color: #4b5563;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.metaBox {
+  min-width: 190px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #ffffff;
+  padding: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.metaGroup + .metaGroup {
+  margin-top: 16px;
+}
+
+.metaLabel {
+  margin: 0 0 6px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.metaValue {
+  margin: 0;
+  color: #111827;
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.panel {
+  width: 100%;
+}
+
+.invitePanel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.invitePanelBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.panelTitle {
+  margin: 0;
+  color: #111827;
+  font-size: 22px;
+  letter-spacing: -0.03em;
+}
+
+.panelText {
+  margin: 6px 0 0;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.userGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  gap: 14px;
+}
+
+.userCard {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 76px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 12px;
+  background: #ffffff;
+}
+
+.avatar,
+.avatarFallback {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 50%;
+  color: #111827;
+  font-weight: 900;
+  background: #f9fafb;
+}
+
+.avatarImage {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #d1d5db;
+}
+
+.userInfo {
+  min-width: 0;
+}
+
+.username {
+  margin: 0;
+  color: #111827;
+  font-weight: 800;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.statusLabel {
+  margin: 4px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.statusDot {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #111827;
+  border-radius: 50%;
+}
+
+.statusIdle {
+  background: #b9b9b9;
+}
+
+.statusReady {
+  background: #63d471;
+}
+
+.statusPlaying {
+  background: #f3c94b;
+}
+
+.matchmakingActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.startButtonBlocked {
+  opacity: 0.65;
+}
+
+.queueInfo {
+  margin: 18px 0 0;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.message {
+  margin: 16px 0 0;
+  padding: 12px;
+  border: 1px solid #f59e0b;
+  border-radius: 12px;
+  background: #fffbeb;
+  color: #92400e;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.readyList {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.readyItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 10px;
+}
+
+.emptyState {
+  margin: 0;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.friendList {
+  display: grid;
+  gap: 12px;
+}
+
+.friendCard {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 12px;
+  background: #ffffff;
+}
+
+.friendMeta {
+  min-width: 0;
+}
+
+.inviteHint {
+  margin: auto 0 0;
+  padding-top: 16px;
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .rightColumn {
+    display: block;
+  }
+
+  .invitePanel {
+    height: auto;
+  }
+
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .metaBox {
+    width: 100%;
+  }
+}

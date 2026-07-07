@@ -1,0 +1,19 @@
+.timer {
+	display: grid;
+	min-width: 96px;
+	min-height: 58px;
+	place-items: center;
+	border: 1px solid #111111;
+	border-radius: 18px;
+	background: #111111;
+	color: #ffffff;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+	font-size: 1.35rem;
+	font-weight: 900;
+}
+
+@media (max-width: 900px) {
+	.timer {
+		width: 100%;
+	}
+}

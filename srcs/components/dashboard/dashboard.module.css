@@ -1,0 +1,76 @@
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  min-height: 180px;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 32px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  color: #111827;
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.card:hover {
+  border-color: #111827;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.08);
+}
+
+.card:focus-visible {
+  outline: 2px solid #111827;
+  outline-offset: 3px;
+}
+
+.cardTitle {
+  margin: 0 0 14px 0;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.cardDescription {
+  max-width: 680px;
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #4b5563;
+}
+
+.cardAction {
+  margin-top: 28px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #111827;
+}
+
+@media (max-width: 640px) {
+  .card {
+    min-height: 150px;
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .cardTitle {
+    font-size: 26px;
+  }
+
+  .cardDescription {
+    font-size: 15px;
+  }
+
+  .cardAction {
+    margin-top: 20px;
+  }
+}

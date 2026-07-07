@@ -1,0 +1,479 @@
+// Tells Prisma to generate the client used to query the database.
+
+// Migration Note：
+// Pending invitation uniqueness is enforced by PostgreSQL partial indexes in
+// migration 20260616000000_tighten_game_invitation_pending_rules:
+// - one pending invitation per unordered user pair
+// - one pending received invitation per invited user
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// PostgreSQL database connection via environment variable.
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================
+// USER & AUTH
+// ============================================================
+
+// Core user account. Holds credentials, profile data, and
+// relations to everything else in the system.
+model User {
+  id String @id @default(cuid())
+
+  username     String @unique
+  email        String @unique
+  passwordHash String
+
+  // Optional profile picture URL (from OAuth or manual upload).
+  image String?
+
+  // Personal quote or signature shown on the profile.
+  bio           String?
+  // Morse learning level, 1–12.
+  learningLevel Int     @default(1)
+
+  isOnline Boolean   @default(false)
+  lastSeen DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  practiceSessions Int @default(0)
+
+  // ── Auth ──
+  accounts Account[]
+  sessions Session[]
+
+  // ── Social ──
+  sentRequests     Friendship[] @relation("SentRequests")
+  receivedRequests Friendship[] @relation("ReceivedRequests")
+
+  // ── Messaging ──
+  sentMessages   Message[]       @relation("SentMessages")
+  systemMessages SystemMessage[]
+  conversationsA Conversation[]  @relation("ConversationA")
+  conversationsB Conversation[]  @relation("ConversationB")
+
+  // ── Game invitations ──
+  gameInvitationsSent     GameInvitation[] @relation("GameFrom")
+  gameInvitationsReceived GameInvitation[] @relation("GameTo")
+
+  // ── Learning progress ──
+  letterProgresses UserLetterProgress[]
+
+  // ── Radio game (competition feature) ──
+  // Current lobby presence across all radio rooms.
+  radioLobbyPresences RadioLobbyPresence[]
+  // Entries in the ready queue (one per room at most).
+  radioReadyQueues    RadioReadyQueue[]
+  // Records of every game session the user participated in.
+  radioSessionPlayers RadioSessionPlayer[]
+}
+
+// OAuth provider account linked to a User.
+// Supports multiple providers per user (Google, GitHub, etc.).
+model Account {
+  id                String @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+
+  refresh_token String?
+  access_token  String?
+  expires_at    Int?
+  token_type    String?
+  scope         String?
+  id_token      String?
+  session_state String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+// Database session record (currently unused — the app uses JWT mode).
+// Kept for NextAuth compatibility in case session strategy is switched later.
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Short-lived token used for password reset and magic-link login.
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ============================================================
+// SOCIAL
+// ============================================================
+
+// Tracks friend requests and their current status between two users.
+// senderId and receiverId together must be unique to prevent duplicates.
+model Friendship {
+  id        Int              @id @default(autoincrement())
+  status    FriendshipStatus @default(PENDING)
+  createdAt DateTime         @default(now())
+  senderRemark   String?
+  receiverRemark String?
+
+  senderId String
+  sender   User   @relation("SentRequests", fields: [senderId], references: [id])
+
+  receiverId String
+  receiver   User   @relation("ReceivedRequests", fields: [receiverId], references: [id])
+
+  @@unique([senderId, receiverId])
+}
+
+// ============================================================
+// MESSAGING
+// ============================================================
+
+// A 1-to-1 conversation thread between exactly two users.
+// userAId and userBId are ordered to prevent duplicate pairs.
+model Conversation {
+  id String @id @default(cuid())
+
+  userAId String
+  userBId String
+
+  userA User @relation("ConversationA", fields: [userAId], references: [id])
+  userB User @relation("ConversationB", fields: [userBId], references: [id])
+
+  messages Message[]
+
+  createdAt DateTime @default(now())
+
+  @@unique([userAId, userBId])
+}
+
+// A single message inside a conversation.
+// mode describes whether the message content is plain text, Morse, or both.
+model Message {
+  id String @id @default(cuid())
+
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  senderId String
+  sender   User   @relation("SentMessages", fields: [senderId], references: [id])
+
+  rawText        String
+  // Populated when the message was sent in Morse and decoded server-side.
+  translatedText String?
+
+  mode MessageMode
+
+  createdAt DateTime @default(now())
+}
+
+// Server-generated notification delivered to a single user's inbox.
+// Used for system alerts, match results, and admin messages.
+// Invitation id, radio id, and UI action status.
+// Kind (message type: game invite/join-lobby/ info)
+// Actionstatus : idle/ accepted/ declined/ expired/ error/ updating
+model SystemMessage {
+  id String @id @default(cuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  title  String
+  body   String
+  isRead Boolean @default(false)
+
+  kind         String?
+  invitationId String?
+  fromUserId   String?
+  radioId      String?
+  actionStatus String?
+  // Sysmultilangue: Stable translation identifier and interpolation values for frontend i18n.
+  // title/body remain as fallbacks for old clients and historical messages.
+  i18nKey      String?
+  i18nParams   Json?
+
+  createdAt DateTime @default(now())
+}
+
+// ============================================================
+// LEARNING
+// ============================================================
+
+// A single Morse character (A–Z, 0–9, punctuation).
+// Seeded once; never created at runtime.
+model Letter {
+  id   Int    @id @default(autoincrement())
+  // The character this row represents, e.g. "A", "B", "1".
+  char String @unique
+
+  userProgress UserLetterProgress[]
+}
+
+// Per-user spaced-repetition state for a single Morse character.
+// Drives the SRS scheduler: interval, ease factor, next review date.
+model UserLetterProgress {
+  id Int @id @default(autoincrement())
+
+  userId   String
+  letterId Int
+
+  // Mastery level 0–10; increases as the user answers correctly.
+  mastery Int @default(0)
+
+  correctCount Int       @default(0)
+  wrongCount   Int       @default(0)
+  totalSeen    Int       @default(0)
+  // Scheduled date for the next review (set by the SRS algorithm).
+  nextReviewAt DateTime
+  // Current review interval in days.
+  interval     Int
+  // SRS ease factor; starts at 2.5, adjusted after each answer.
+  easeFactor   Float     @default(2.5)
+  lastReviewed DateTime?
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  letter Letter @relation(fields: [letterId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, letterId])
+}
+
+// ============================================================
+// GAME — INVITATIONS
+// ============================================================
+
+// An invitation from one user to another to join a radio lobby.
+// The target is always a lobby (radioRoomId), never a live session directly.
+// radioRoomId is optional to stay compatible with any future non-radio invite types.
+model GameInvitation {
+  id String @id @default(cuid())
+
+  fromUserId String
+  toUserId   String
+
+  fromUser User @relation("GameFrom", fields: [fromUserId], references: [id])
+  toUser   User @relation("GameTo", fields: [toUserId], references: [id])
+
+  status GameInviteStatus @default(PENDING)
+
+  // The radio lobby this invitation leads to.
+  // SetNull on delete: deleting a room does not cascade-delete invitation history.
+  radioRoomId String?
+  radioRoom   RadioRoom? @relation(fields: [radioRoomId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+}
+
+// ============================================================
+// GAME — RADIO ROOMS
+// ============================================================
+
+// A persistent radio channel configuration.
+// There are exactly 3 rows (radioId "01", "02", "03"), seeded at setup time.
+// Storing wpm/name/description here lets the socket layer read config from the
+// database without importing frontend constants.
+model RadioRoom {
+  id String @id @default(cuid())
+
+  // Matches the frontend RadioId type: "01" | "02" | "03".
+  radioId String @unique
+
+  // Human-readable name shown in the UI, e.g. "Radio Wave 01".
+  name        String
+  // Morse transmission speed for this channel, in words per minute.
+  wpm         Int
+  description String
+
+  // Hard cap on concurrent lobby users. Matches frontend RADIO_LOBBY_MAX_USERS = 7.
+  maxUsers Int @default(7)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  lobbyPresences  RadioLobbyPresence[]
+  readyQueue      RadioReadyQueue[]
+  gameSessions    RadioGameSession[]
+  gameInvitations GameInvitation[]
+}
+
+// ============================================================
+// GAME — LOBBY PRESENCE
+// ============================================================
+
+// Tracks which users are currently inside a radio lobby and their status.
+// One row per (user, room) pair — a user can only be in one room at a time.
+//
+// Socket events that write to this table:
+//   radio:join   → INSERT (status = IDLE)
+//   radio:leave  → DELETE
+//   radio:ready  → UPDATE status = READY   (also inserts into RadioReadyQueue)
+//   radio:unready→ UPDATE status = IDLE    (also deletes from RadioReadyQueue)
+//
+// The socket layer sets status = PLAYING in bulk when a session starts,
+// and resets it to IDLE when the session ends.
+model RadioLobbyPresence {
+  id String @id @default(cuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  roomId String
+  room   RadioRoom @relation(fields: [roomId], references: [id], onDelete: Cascade)
+
+  // Mirrors frontend RadioUserStatus: IDLE | READY | PLAYING.
+  // PLAYING is only set by the server, never directly by the client.
+  status RadioUserStatus @default(IDLE)
+
+  // When the user joined the lobby; used to sort the lobby user list.
+  joinedAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, roomId])
+}
+
+// ============================================================
+// GAME — READY QUEUE
+// ============================================================
+
+// The authoritative server-side queue of players who have clicked Ready.
+// This is the sole source of truth for matchmaking decisions.
+//
+// It is intentionally separate from RadioLobbyPresence.status:
+//   - LobbyPresence.status drives the frontend rendering (who looks ready in the UI).
+//   - ReadyQueue drives the backend logic (who is actually eligible to start a game).
+//
+// Socket events:
+//   radio:ready   → INSERT
+//   radio:unready → DELETE
+//   Session start → DELETE all rows for the room (players move to RadioSessionPlayer)
+model RadioReadyQueue {
+  id String @id @default(cuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  roomId String
+  room   RadioRoom @relation(fields: [roomId], references: [id], onDelete: Cascade)
+
+  // Timestamp used to pick players in FIFO order when the queue exceeds session capacity.
+  readyAt DateTime @default(now())
+
+  // A player may only occupy one slot in the queue per room at a time.
+  @@unique([userId, roomId])
+}
+
+// ============================================================
+// GAME — SESSIONS
+// ============================================================
+
+// A single decoding game session, created by the server in response to
+// the socket event radio:start-game.
+//
+// Flow:
+//   1. Server receives radio:start-game from a ready player.
+//   2. Server creates this row (status = WAITING).
+//   3. Server moves all ready players from RadioReadyQueue → RadioSessionPlayer.
+//   4. Server broadcasts radio:game-created { radioId, sessionId }.
+//   5. All ready players redirect to /competition/radio/[radioId]/session/[sessionId].
+//   6. Server sets status = ACTIVE when the session begins.
+//   7. Server sets status = FINISHED and writes scores when the session ends.
+model RadioGameSession {
+  id String @id @default(cuid())
+
+  roomId String
+  room   RadioRoom @relation(fields: [roomId], references: [id])
+
+  status RadioSessionStatus @default(WAITING)
+
+  // Set immediately when this row is created; used as the URL segment.
+  createdAt DateTime  @default(now())
+  // Set when all players have connected and the countdown starts.
+  startedAt DateTime?
+  // Set when the last player submits or the time limit is reached.
+  endedAt   DateTime?
+
+  players RadioSessionPlayer[]
+}
+
+// One participant slot inside a RadioGameSession.
+// Rows are inserted in bulk when the session is created, then updated
+// individually as each player finishes or disconnects.
+model RadioSessionPlayer {
+  id String @id @default(cuid())
+
+  sessionId String
+  session   RadioGameSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Decoding score; null while the game is still in progress.
+  score Int?
+  // Live accuracy counters shown in the multiplayer ranking.
+  correct Int @default(0)
+  total   Int @default(0)
+  // Time taken to complete the decoding, in milliseconds; used for tie-breaking.
+  timeMs Int?
+  // True once the player completes or abandons the session.
+  completed Boolean @default(false)
+  // True when the player explicitly leaves before the session ends.
+  // Abandon feature: add abandoned boolean.
+  abandoned Boolean @default(false)
+
+  joinedAt DateTime @default(now())
+
+  @@unique([sessionId, userId])
+}
+
+// ============================================================
+// ENUMS
+// ============================================================
+
+enum FriendshipStatus {
+  PENDING
+  ACCEPTED
+  BLOCKED
+}
+
+enum MessageMode {
+  LANGUAGE_TO_MORSE
+  MORSE_TO_LANGUAGE
+  LANGUAGE_ONLY
+}
+
+enum GameInviteStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  EXPIRED
+}
+
+// Mirrors the frontend type RadioUserStatus = "idle" | "ready" | "playing".
+enum RadioUserStatus {
+  IDLE
+  READY
+  PLAYING
+}
+
+// Lifecycle states of a single game session.
+enum RadioSessionStatus {
+  // Created by the server; players are still being redirected to the session page.
+  WAITING
+  // All players have connected; the decoding challenge is live.
+  ACTIVE
+  // The session has ended; scores have been written to RadioSessionPlayer.
+  FINISHED
+}

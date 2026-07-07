@@ -1,0 +1,37 @@
+.title {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.description {
+  margin: 0 0 24px 0;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.fields {
+  display: grid;
+  gap: 16px;
+}
+
+.error {
+  margin-top: 16px;
+  color: #b91c1c;
+  line-height: 1.5;
+}
+
+.success {
+  margin-top: 16px;
+  color: #166534;
+  line-height: 1.5;
+}
+
+.submitArea {
+  margin-top: 20px;
+}
+
+.required {
+  font-weight: 700;
+  color: #b91c1c;
+}

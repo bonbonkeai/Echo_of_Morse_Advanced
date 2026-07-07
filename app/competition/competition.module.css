@@ -1,0 +1,235 @@
+.hero {
+  margin: 40px 0 36px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(44px, 7vw, 84px);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  color: #111827;
+}
+
+.topGrid {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  gap: 24px;
+  margin: 32px 0 40px;
+}
+
+.radioSection {
+  margin: 40px 0 64px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #111827;
+}
+
+.sectionTitle {
+  margin: 0;
+  color: #111827;
+  font-size: 28px;
+  letter-spacing: -0.03em;
+}
+
+.sectionDescription {
+  max-width: 560px;
+  margin: 8px 0 0;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.radioGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.overviewCard,
+.rulesCard {
+  height: 100%;
+}
+
+.cardTitle {
+  margin: 0 0 18px;
+  color: #111827;
+  font-size: 22px;
+  letter-spacing: -0.03em;
+}
+
+.statsList {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.statRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.statRow dt {
+  color: #4b5563;
+}
+
+.statRow dd {
+  margin: 0;
+  color: #111827;
+  font-weight: 800;
+}
+
+.socketHint {
+  margin: 16px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.rulesList {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding-left: 20px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.invitationPanel {
+  margin-bottom: 40px;
+}
+
+.invitationList {
+  display: grid;
+  gap: 12px;
+}
+
+.invitationItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.invitationItem:last-child {
+  border-bottom: 0;
+}
+
+.invitationItem p {
+  margin: 4px 0 0;
+  color: #4b5563;
+}
+
+.invitationActions {
+  display: flex;
+  gap: 10px;
+}
+
+.radioLink {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.radioUnavailable {
+  display: block;
+  color: inherit;
+  cursor: not-allowed;
+}
+
+.radioLink:focus-visible {
+  outline: 3px solid #111827;
+  outline-offset: 5px;
+  border-radius: 18px;
+}
+
+.radioCard {
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    border-color 0.16s ease;
+}
+
+.radioLink:hover .radioCard {
+  transform: translateY(-3px);
+  border-color: #111827;
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.12);
+}
+
+.radioCardFull {
+  border-color: #d1d5db;
+  background: #f9fafb;
+  color: #6b7280;
+}
+
+.radioTopLine {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.radioName {
+  color: #111827;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.radioWpm {
+  border: 1px solid #111827;
+  border-radius: 999px;
+  padding: 5px 10px;
+  color: #111827;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.radioDescription {
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.radioFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 24px;
+  color: #111827;
+  font-weight: 700;
+}
+
+.radioFullBadge {
+  color: #92400e;
+}
+
+@media (max-width: 900px) {
+  .topGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .radioGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
