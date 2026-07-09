@@ -38,7 +38,7 @@ export default function RadioWaveCard({
 	.replace("{count}", String(usersCount))
 	.replace("{maxUsers}", String(RADIO_LOBBY_MAX_USERS));
 
-  const card = (
+  return (
     <Card
       as="article"
       className={`${styles.radioCard} ${isLobbyFull ? styles.radioCardFull : ""}`}
@@ -51,37 +51,28 @@ export default function RadioWaveCard({
       <p className={styles.radioDescription}>{radioDescription}</p>
 
       <div className={styles.radioFooter}>
-        <span>{usersCapacityLabel}</span>
-        <span className={isLobbyFull ? styles.radioFullBadge : ""}>
-          {isLobbyFull ? t.full : t.enter}
-        </span>
+        <span className={styles.radioCapacity}>{usersCapacityLabel}</span>
+
+        {isLobbyFull ? (
+          <span
+            className={`${styles.radioAction} ${styles.radioActionDisabled}`}
+            aria-disabled="true"
+          >
+            {t.full}
+          </span>
+        ) : (
+          <Link
+            href={`/competition/radio/${radio.id}`}
+            className={styles.radioAction}
+            aria-label={t.enterRadioAria
+              .replace("{radioName}", radioName)
+              .replace("{wpm}", String(radio.wpm))
+              .replace("{capacity}", usersCapacityLabel)}
+          >
+            {t.enter}
+          </Link>
+        )}
       </div>
     </Card>
-  );
-
-  if (isLobbyFull) {
-    return (
-      <div
-        className={styles.radioUnavailable}
-        aria-label={t.lobbyFullAria
-			.replace("{radioName}", radioName)
-			.replace("{wpm}", String(radio.wpm))}
-      >
-        {card}
-      </div>
-    );
-  }
-
-  return (
-    <Link
-      href={`/competition/radio/${radio.id}`}
-      className={styles.radioLink}
-      aria-label={t.enterRadioAria
-		.replace("{radioName}", radioName)
-		.replace("{wpm}", String(radio.wpm))
-		.replace("{capacity}", usersCapacityLabel)}
-    >
-      {card}
-    </Link>
   );
 }

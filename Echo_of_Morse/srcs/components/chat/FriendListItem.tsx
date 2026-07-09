@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import type { MouseEvent } from "react";
 import type { Friend } from "@/types/chat";
 import FriendContextMenu from "./FriendContextMenu";
@@ -15,6 +14,9 @@ type FriendListItemProps = {
   inviteDisabledReason?: string | null;
   onInviteFriendToGame: (friendId: string) => void;
   onSelectFriend: (friendId: string) => void;
+  onRequestContextMenu: (friendId: string) => void;
+  activeContextMenuFriendId: string | null;
+  onCloseContextMenu: () => void;
   onRenameFriend: (friendId: string, nextDisplayName: string) => void;
   onDeleteFriend: (friendId: string) => void;
 };
@@ -42,17 +44,15 @@ export default function FriendListItem({
   isGameInvitePending,
   inviteDisabledReason,
   onSelectFriend,
+  onInviteFriendToGame,
+  onRequestContextMenu,
+  activeContextMenuFriendId,
+  onCloseContextMenu,
   onRenameFriend,
   onDeleteFriend,
-  onInviteFriendToGame,
 }: FriendListItemProps) {
   const { dictionary } = useI18n();
   const t = dictionary.chat;
-
-  const [menuPosition, setMenuPosition] = useState<{
-    x: number;
-    y: number;
-  } | null>(null);
 
   const profileHref = `/users/${friend.id}`;
   const displayName = friend.displayName || friend.username || t.unknownUser;
@@ -66,35 +66,7 @@ export default function FriendListItem({
 
   function handleContextMenu(event: MouseEvent<HTMLDivElement>) {
     event.preventDefault();
-
-    setMenuPosition({
-      x: event.clientX,
-      y: event.clientY,
-    });
-  }
-
-  function handleRename() {
-    const nextDisplayName = window.prompt(t.newRemarkName, friend.displayName);
-
-    if (!nextDisplayName?.trim()) {
-      return;
-    }
-
-    onRenameFriend(friend.id, nextDisplayName.trim());
-    setMenuPosition(null);
-  }
-
-  function handleDelete() {
-    const confirmed = window.confirm(
-      t.deleteFriendConfirm.replace("{displayName}", friend.displayName)
-    );
-
-    if (!confirmed) {
-      return;
-    }
-
-    onDeleteFriend(friend.id);
-    setMenuPosition(null);
+    onRequestContextMenu(friend.id);
   }
 
   function handleInviteToGame(event: MouseEvent<HTMLButtonElement>) {
@@ -205,17 +177,41 @@ export default function FriendListItem({
             </button>
           </div>
         </div>
+
+        {activeContextMenuFriendId === friend.id ? (
+          <div className={styles.menuAnchor}>
+            <FriendContextMenu
+              onClose={onCloseContextMenu}
+              onRename={() => {
+                const nextDisplayName = window.prompt(
+                  t.newRemarkName,
+                  friend.displayName
+                );
+
+                if (!nextDisplayName?.trim()) {
+                  return;
+                }
+
+                onRenameFriend(friend.id, nextDisplayName.trim());
+                onCloseContextMenu();
+              }}
+              onDelete={() => {
+                const confirmed = window.confirm(
+                  t.deleteFriendConfirm.replace("{displayName}", friend.displayName)
+                );
+
+                if (!confirmed) {
+                  return;
+                }
+
+                onDeleteFriend(friend.id);
+                onCloseContextMenu();
+              }}
+            />
+          </div>
+        ) : null}
       </div>
 
-      {menuPosition ? (
-        <FriendContextMenu
-          x={menuPosition.x}
-          y={menuPosition.y}
-          onClose={() => setMenuPosition(null)}
-          onRename={handleRename}
-          onDelete={handleDelete}
-        />
-      ) : null}
     </>
   );
 }

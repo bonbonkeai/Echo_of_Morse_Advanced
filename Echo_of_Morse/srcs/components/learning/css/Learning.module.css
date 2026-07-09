@@ -3,12 +3,46 @@
   min-height: calc(100vh - 96px);
   padding: 2px 0 48px;
   color: var(--foreground);
-  background: var(--background);
 }
 
 .learningContainer {
   width: min(1080px, 100%);
   margin: 0 auto;
+}
+
+.learningHeroCard {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
+  color: rgba(247, 242, 236, 0.94);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.backButton:hover {
+  border-color: rgba(175, 198, 255, 0.34);
+  background:
+    linear-gradient(180deg, rgba(141, 183, 255, 0.16), rgba(137, 224, 198, 0.1)),
+    rgba(255, 255, 255, 0.06);
+}
+
+.levelsHeader {
+  display: grid;
+  gap: 12px;
 }
 
 .hero {
@@ -17,26 +51,37 @@
 
 .eyebrow {
   margin: 0 0 8px;
-  color: #666666;
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  padding: 7px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
+  color: rgba(247, 242, 236, 0.9);
   font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .title {
   margin: 0;
-  color: #111111;
+  color: #f7f2ec;
   font-size: clamp(2.2rem, 5vw, 4rem);
   line-height: 1;
   font-weight: 800;
+  letter-spacing: -0.05em;
+  font-family: var(--font-display);
 }
 
 .description {
-  max-width: 680px;
+  max-width: none;
   margin: 16px 0 0;
-  color: #555555;
-  font-size: 1rem;
+  color: rgba(246, 240, 233, 0.76);
+  font-size: 0.96rem;
   line-height: 1.7;
 }
 
@@ -58,10 +103,14 @@
   gap: 12px;
   margin: 0 auto;
   padding: 22px 24px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 22px;
-  background: #ffffff;
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.05);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+    rgba(18, 34, 30, 0.34);
+  box-shadow:
+    0 18px 42px rgba(4, 14, 12, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
   justify-items: center;
   text-align: center;
 }
@@ -77,20 +126,26 @@
   min-height: 280px;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #e6e6e6;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 22px;
-  background: #ffffff;
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.05);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+    rgba(18, 34, 30, 0.28);
+  box-shadow:
+    0 14px 32px rgba(4, 14, 12, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
   overflow: hidden;
 }
 
 .learningPreviewCard:hover {
-  border-color: #cfd8ff;
+  border-color: rgba(175, 198, 255, 0.36);
 }
 
 .learningPreviewCardRevealed {
-  border-color: #cfd8ff;
-  box-shadow: 0 16px 38px rgba(24, 39, 116, 0.08);
+  border-color: rgba(175, 198, 255, 0.36);
+  box-shadow:
+    0 16px 38px rgba(4, 14, 12, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .learningPreviewCardBody {
@@ -105,25 +160,25 @@
 }
 
 .learningPreviewCard:focus-within {
-  outline: 2px solid #111111;
+  outline: 2px solid rgba(141, 183, 255, 0.9);
   outline-offset: 3px;
 }
 
 .learningPreviewBulbButton:focus-visible,
 .learningPreviewPlayButton:focus-visible {
-  outline: 2px solid #111111;
+  outline: 2px solid rgba(141, 183, 255, 0.9);
   outline-offset: 3px;
 }
 
 .learningPreviewCharacter {
-  color: #111111;
+  color: #f7f2ec;
   font-size: 2.8rem;
   line-height: 1;
   font-weight: 850;
 }
 
 .learningPreviewHint {
-  color: #666666;
+  color: rgba(246, 240, 233, 0.7);
   font-size: 0.82rem;
   font-weight: 650;
 }
@@ -144,9 +199,11 @@
   position: relative;
   width: 52px;
   height: 66px;
-  border: 1px solid #d8d8d8;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 18px 18px 20px 20px;
-  background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)),
+    rgba(255, 255, 255, 0.06);
 }
 
 .learningPreviewBulb::before {
@@ -156,7 +213,7 @@
   left: 50%;
   width: 28px;
   height: 28px;
-  border: 2px solid #d8d8d8;
+  border: 2px solid rgba(255, 255, 255, 0.22);
   border-bottom-color: transparent;
   border-radius: 50%;
   transform: translateX(-50%);
@@ -170,7 +227,7 @@
   width: 18px;
   height: 10px;
   border-radius: 4px;
-  background: #d8d8d8;
+  background: rgba(255, 255, 255, 0.22);
   transform: translateX(-50%);
 }
 
@@ -200,14 +257,14 @@
 }
 
 .learningPreviewCodeHidden {
-  color: #666666;
+  color: rgba(246, 240, 233, 0.7);
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.14em;
 }
 
 .learningPreviewCodeVisible {
-  color: #0f0f0f;
+  color: #f7f2ec;
   font-size: 1.38rem;
   font-weight: 950;
   letter-spacing: 0.2em;
@@ -221,7 +278,7 @@
 
 .learningPreviewMorseHidden {
   display: inline-block;
-  color: #666666;
+  color: rgba(246, 240, 233, 0.7);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.88rem;
   font-weight: 500;
@@ -231,10 +288,12 @@
 .learningPreviewPlayButton {
   margin: 0 22px 22px;
   min-height: 40px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
-  background: #fafafa;
-  color: #111111;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
+  color: #f7f2ec;
   font-size: 0.9rem;
   font-weight: 700;
 }
@@ -273,15 +332,19 @@
   gap: 24px;
   margin-top: 28px;
   padding: 28px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 24px;
-  background: #ffffff;
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.06);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+    rgba(18, 34, 30, 0.34);
+  box-shadow:
+    0 18px 42px rgba(4, 14, 12, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
 }
 
 .cardLabel {
   margin: 0 0 10px;
-  color: #666666;
+  color: rgba(246, 240, 233, 0.66);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -290,7 +353,7 @@
 
 .progressTitle {
   margin: 0;
-  color: #111111;
+  color: #f7f2ec;
   font-size: clamp(2rem, 4vw, 3.2rem);
   line-height: 1;
   font-weight: 800;
@@ -298,7 +361,7 @@
 
 .cardText {
   margin: 12px 0 0;
-  color: #555555;
+  color: rgba(246, 240, 233, 0.74);
   line-height: 1.6;
 }
 
@@ -312,19 +375,21 @@
 
 .progressStats div {
   padding: 16px;
-  border: 1px solid #eeeeee;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 16px;
-  background: #fafafa;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
 }
 
 .progressStats dt {
-  color: #666666;
+  color: rgba(246, 240, 233, 0.66);
   font-size: 0.78rem;
 }
 
 .progressStats dd {
   margin: 8px 0 0;
-  color: #111111;
+  color: #f7f2ec;
   font-size: 1.25rem;
   font-weight: 800;
 }
@@ -344,17 +409,22 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 24px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 24px;
-  background: #ffffff;
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.05);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+    rgba(18, 34, 30, 0.32);
+  box-shadow:
+    0 18px 42px rgba(4, 14, 12, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
 .entryTitle {
   margin: 0;
-  color: #111111;
+  color: #f7f2ec;
   font-size: 1.55rem;
   font-weight: 800;
+  font-family: var(--font-display);
 }
 
 /* Buttons and links */
@@ -373,6 +443,7 @@
   font-size: 0.95rem;
   font-weight: 750;
   text-decoration: none;
+  font-family: var(--font-display);
   transition:
     background 160ms ease,
     color 160ms ease,
@@ -382,34 +453,38 @@
 }
 
 .primaryButton {
-  border: 1px solid #111111;
-  background: #111111;
+  border: 1px solid rgba(175, 198, 255, 0.38);
+  background: linear-gradient(135deg, rgba(141, 183, 255, 0.94), rgba(185, 164, 255, 0.96));
   color: #ffffff;
 }
 
 .primaryButton:hover {
-  background: #000000;
+  background: linear-gradient(135deg, rgba(153, 194, 255, 0.98), rgba(196, 176, 255, 0.98));
   transform: translateY(-1px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 18px rgba(4, 14, 12, 0.18);
 }
 
 .secondaryButton {
-  border: 1px solid #111111;
-  background: #ffffff;
-  color: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
+  color: #f7f2ec;
 }
 
 .secondaryButton:hover {
-  background: #111111;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)),
+    rgba(255, 255, 255, 0.08);
   color: #ffffff;
   transform: translateY(-1px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 18px rgba(4, 14, 12, 0.16);
 }
 
 .disabledButton {
-  border: 1px solid #dddddd;
-  background: #f2f2f2;
-  color: #999999;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(246, 240, 233, 0.42);
   cursor: not-allowed;
 }
 
@@ -417,32 +492,8 @@
 .secondaryButton:focus-visible,
 .disabledButton:focus-visible,
 .link:focus-visible {
-  outline: 2px solid #111111;
+  outline: 2px solid rgba(141, 183, 255, 0.9);
   outline-offset: 3px;
-}
-
-/* Breadcrumb */
-
-.breadcrumb {
-  margin-bottom: 10px;
-  color: #111111;
-  font-size: 1rem;
-  font-weight: 650;
-}
-
-.link {
-  color: #111111;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.link:hover {
-  text-decoration: underline;
-}
-
-.breadcrumbCurrent {
-  color: #111111;
-  font-weight: 500;
 }
 
 /* Level directory */
@@ -458,12 +509,20 @@
   display: flex;
   min-height: 260px;
   flex-direction: column;
-  justify-content: space-between;
   padding: 22px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 24px;
-  background: #ffffff;
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.05);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+    rgba(18, 34, 30, 0.32);
+  box-shadow:
+    0 18px 42px rgba(4, 14, 12, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.levelBody {
+  display: grid;
+  gap: 16px;
 }
 
 .levelCardLocked {
@@ -479,9 +538,10 @@
 
 .levelTitle {
   margin: 0;
-  color: #111111;
+  color: #f7f2ec;
   font-size: 1.35rem;
   font-weight: 800;
+  font-family: var(--font-display);
 }
 
 .statusBadge {
@@ -489,25 +549,27 @@
   min-height: 28px;
   align-items: center;
   padding: 0 10px;
-  border: 1px solid #dddddd;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
-  background: #f5f5f5;
-  color: #333333;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
+  color: rgba(246, 240, 233, 0.84);
   font-size: 0.76rem;
   font-weight: 700;
+  font-family: var(--font-display);
   text-transform: capitalize;
 }
 
 .statusBadgeLocked {
-  background: #eeeeee;
-  color: #888888;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(246, 240, 233, 0.46);
 }
 
 .characterList {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 18px;
 }
 
 .characterPill {
@@ -515,12 +577,47 @@
   min-height: 34px;
   align-items: center;
   padding: 0 10px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
-  background: #fafafa;
-  color: #111111;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
+  color: rgba(247, 242, 236, 0.92);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.88rem;
+}
+
+.levelSummary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.summaryItem {
+  display: grid;
+  gap: 6px;
+  min-height: 72px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
+}
+
+.summaryLabel {
+  color: rgba(246, 240, 233, 0.66);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.summaryValue {
+  color: #f7f2ec;
+  font-size: 0.96rem;
+  font-weight: 800;
+  line-height: 1.35;
 }
 
 .levelMeta {
@@ -528,7 +625,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   width: 100%;
-  margin: 20px 0 0;
+  margin: 4px 0 0;
 }
 
 .metaBox {
@@ -536,23 +633,48 @@
   align-content: center;
   min-height: 72px;
   padding: 14px 16px;
-  border: 1px solid #eeeeee;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 16px;
-  background: #fafafa;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
 }
 
 .metaLabel {
   margin: 0;
-  color: #666666;
+  color: rgba(246, 240, 233, 0.66);
   font-size: 0.78rem;
 }
 
 .metaValue {
   margin: 7px 0 0;
-  color: #111111;
+  color: #f7f2ec;
   font-size: 0.95rem;
   font-weight: 800;
   line-height: 1.35;
+}
+
+.levelFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 10px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.levelFooter .primaryButton,
+.levelFooter .secondaryButton,
+.levelFooter .disabledButton {
+  margin-top: 0;
+}
+
+.levelFooterHint {
+  margin: 0;
+  color: rgba(246, 240, 233, 0.7);
+  font-size: 0.82rem;
+  line-height: 1.45;
 }
 
 /* Character progress chart */
@@ -562,10 +684,14 @@
   gap: 22px;
   margin-top: 24px;
   padding: 28px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 24px;
-  background: #ffffff;
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.05);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+    rgba(18, 34, 30, 0.32);
+  box-shadow:
+    0 18px 42px rgba(4, 14, 12, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
 .letterChartHeader {
@@ -587,7 +713,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 18px 0 46px;
-  color: #777777;
+  color: rgba(246, 240, 233, 0.58);
   font-size: 0.72rem;
   font-weight: 700;
   text-align: right;
@@ -598,8 +724,8 @@
   overflow-y: hidden;
   padding-bottom: 14px;
   scrollbar-width: thin;
-  scrollbar-color: #111111 #e5e5e5;
-  box-shadow: inset -18px 0 18px -18px rgba(0, 0, 0, 0.28);
+  scrollbar-color: rgba(247, 242, 236, 0.72) rgba(255, 255, 255, 0.1);
+  box-shadow: inset -18px 0 18px -18px rgba(4, 14, 12, 0.28);
 }
 
 .verticalChartScroll::-webkit-scrollbar {
@@ -608,16 +734,16 @@
 
 .verticalChartScroll::-webkit-scrollbar-track {
   border-radius: 999px;
-  background: #e5e5e5;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .verticalChartScroll::-webkit-scrollbar-thumb {
   border-radius: 999px;
-  background: #111111;
+  background: rgba(247, 242, 236, 0.6);
 }
 
 .verticalChartScroll::-webkit-scrollbar-thumb:hover {
-  background: #000000;
+  background: rgba(247, 242, 236, 0.82);
 }
 
 .verticalChart {
@@ -627,10 +753,10 @@
   align-items: flex-end;
   gap: 12px;
   padding: 18px 8px 0;
-  border-left: 1px solid #eeeeee;
-  border-bottom: 1px solid #dddddd;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   background:
-    linear-gradient(to top, #eeeeee 1px, transparent 1px) 0 0 / 100% 25%;
+    linear-gradient(to top, rgba(255, 255, 255, 0.1) 1px, transparent 1px) 0 0 / 100% 25%;
 }
 
 .verticalChartItem {
@@ -653,14 +779,14 @@
   width: 24px;
   min-height: 2px;
   border-radius: 999px 999px 4px 4px;
-  background: #111111;
+  background: linear-gradient(180deg, rgba(141, 183, 255, 0.96), rgba(185, 164, 255, 0.88));
 }
 
 .verticalChartValue {
   position: absolute;
   top: -16px;
   left: 50%;
-  color: #555555;
+  color: rgba(246, 240, 233, 0.72);
   font-size: 0.68rem;
   font-weight: 800;
   transform: translateX(-50%);
@@ -675,14 +801,14 @@
 }
 
 .verticalChartLabel strong {
-  color: #111111;
+  color: #f7f2ec;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 1rem;
   font-weight: 900;
 }
 
 .verticalChartLabel span {
-  color: #777777;
+  color: rgba(246, 240, 233, 0.64);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.68rem;
   font-weight: 700;
@@ -690,7 +816,7 @@
 
 .chartScrollHint {
   margin: -8px 0 0;
-  color: #666666;
+  color: rgba(246, 240, 233, 0.7);
   font-size: 0.82rem;
   line-height: 1.5;
 }
@@ -726,6 +852,15 @@
   .levelMeta {
     grid-template-columns: 1fr;
     justify-content: stretch;
+  }
+
+  .levelSummary {
+    grid-template-columns: 1fr;
+  }
+
+  .levelFooter {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .letterChartCard {

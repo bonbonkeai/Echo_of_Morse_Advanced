@@ -1,12 +1,19 @@
 .menu {
-  position: fixed;
+  position: relative;
   z-index: 1000;
-  min-width: 160px;
-  padding: 6px;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  background: #ffffff;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+  min-width: 180px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)),
+    rgba(18, 34, 30, 0.84);
+  box-shadow:
+    0 24px 48px rgba(4, 14, 12, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  pointer-events: auto;
 }
 
 .item,
@@ -17,22 +24,22 @@
   border: none;
   border-radius: 8px;
   background: transparent;
-  color: #111827;
+  color: rgba(247, 242, 236, 0.94);
   cursor: pointer;
   font-size: 14px;
   text-align: left;
 }
 
 .item:hover {
-  background: #f3f4f6;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .deleteItem {
-  color: #b91c1c;
+  color: #ffb3b3;
 }
 
 .deleteItem:hover {
-  background: #fee2e2;
+  background: rgba(255, 145, 145, 0.12);
 }
 
 

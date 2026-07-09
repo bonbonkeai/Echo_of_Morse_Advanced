@@ -5,18 +5,22 @@
   display: grid;
   place-items: center;
   padding: 24px;
-  background: rgba(17, 24, 39, 0.45);
+  background: rgba(4, 14, 12, 0.45);
 }
 
 .modal {
   width: min(520px, 100%);
   max-height: min(720px, 90vh);
   overflow: auto;
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 20px;
-  background: #ffffff;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+    rgba(18, 34, 30, 0.88);
   padding: 24px;
-  box-shadow: 0 24px 80px rgba(17, 24, 39, 0.28);
+  box-shadow:
+    0 24px 80px rgba(4, 14, 12, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
 .header {
@@ -29,32 +33,32 @@
 
 .title {
   margin: 0;
-  color: #111827;
+  color: #f7f2ec;
   font-size: 24px;
   letter-spacing: -0.03em;
 }
 
 .description {
   margin: 8px 0 0;
-  color: #4b5563;
+  color: rgba(246, 240, 233, 0.76);
   line-height: 1.5;
 }
 
 .closeButton {
   width: 34px;
   height: 34px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
-  background: #ffffff;
-  color: #4b5563;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(246, 240, 233, 0.72);
   cursor: pointer;
   font-size: 22px;
   line-height: 1;
 }
 
 .closeButton:hover {
-  background: #f3f4f6;
-  color: #111827;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
 }
 
 .radioList {
@@ -67,38 +71,42 @@
   grid-template-columns: 1fr auto;
   gap: 8px 16px;
   width: 100%;
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 16px;
   padding: 16px;
-  background: #ffffff;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
   cursor: pointer;
   text-align: left;
 }
 
 .radioOption:hover {
-  border-color: #111827;
-  background: #f9fafb;
+  border-color: rgba(175, 198, 255, 0.34);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)),
+    rgba(255, 255, 255, 0.08);
 }
 
 .radioOption:focus-visible {
-  outline: 3px solid #111827;
+  outline: 3px solid rgba(141, 183, 255, 0.9);
   outline-offset: 3px;
 }
 
 .radioName {
-  color: #111827;
+  color: #f7f2ec;
   font-weight: 800;
 }
 
 .radioMeta {
-  color: #111827;
+  color: #f7f2ec;
   font-size: 13px;
   font-weight: 800;
 }
 
 .radioDescription {
   grid-column: 1 / -1;
-  color: #4b5563;
+  color: rgba(246, 240, 233, 0.76);
   line-height: 1.45;
 }
 

@@ -46,7 +46,7 @@ export default function PracticeResult({
 				</p>
 				{/*------------------ titre resultat ------------------*/}
 				<h1 className={styles.resultTitle}>
-					{hasPassed ? `🎉 ${t.levelPassed} 🎉` : t.tryAgain}
+					{hasPassed ? t.levelPassed : t.tryAgain}
 				</h1>
 
 				{/*------------------ des donnees pour resultat ------------------*/}

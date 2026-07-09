@@ -4,24 +4,32 @@
   gap: 12px;
   align-items: end;
   padding: 16px 20px;
-  border-top: 1px solid #e5e7eb;
-  background: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .textarea {
   width: 100%;
   resize: none;
   padding: 12px 14px;
-  border: 1px solid #d1d5db;
-  border-radius: 12px;
-  color: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  color: #f7f2ec;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 248, 0.08), rgba(255, 252, 248, 0.04)),
+    rgba(255, 255, 255, 0.03);
   font: inherit;
   line-height: 1.5;
   outline: none;
+  backdrop-filter: blur(16px) saturate(132%);
+  -webkit-backdrop-filter: blur(16px) saturate(132%);
 }
 
 .textarea:focus {
-  border-color: #111827;
+  border-color: rgba(141, 183, 255, 0.65);
+  box-shadow:
+    0 0 0 4px rgba(141, 183, 255, 0.12),
+    0 0 0 8px rgba(137, 224, 198, 0.05);
 }
 
 .inputArea {
@@ -31,7 +39,7 @@
 
 .error {
   margin: 0;
-  color: #b91c1c;
+  color: #ff9c9c;
   font-size: 13px;
   line-height: 1.4;
 }

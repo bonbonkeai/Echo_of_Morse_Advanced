@@ -10,7 +10,10 @@ type ChatHeaderProps = {
   onCloseChat: () => void;
 };
 
-export default function ChatHeader({ friend, onCloseChat }: ChatHeaderProps) {
+export default function ChatHeader({
+  friend,
+  onCloseChat,
+}: ChatHeaderProps) {
 	const { dictionary } = useI18n();
 	const t = dictionary.chat;
 

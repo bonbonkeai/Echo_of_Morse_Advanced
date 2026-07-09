@@ -1,24 +1,24 @@
 .hero {
-  margin: 40px 0 36px;
+  margin: 24px 0 28px;
 }
 
 .title {
   margin: 0;
-  font-size: clamp(44px, 7vw, 84px);
-  line-height: 0.95;
-  letter-spacing: -0.06em;
-  color: #111827;
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+  color: #f7f2ec;
 }
 
 .topGrid {
   display: grid;
   grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
   gap: 24px;
-  margin: 32px 0 40px;
+  margin: 28px 0 36px;
 }
 
 .radioSection {
-  margin: 40px 0 64px;
+  margin: 36px 0 64px;
 }
 
 .sectionHeader {
@@ -26,23 +26,20 @@
   justify-content: space-between;
   align-items: flex-end;
   gap: 24px;
-  margin-bottom: 20px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #111827;
+  margin-bottom: 18px;
 }
 
 .sectionTitle {
   margin: 0;
-  color: #111827;
+  color: #f7f2ec;
   font-size: 28px;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
 }
 
 .sectionDescription {
-  max-width: 560px;
   margin: 8px 0 0;
-  color: #4b5563;
-  line-height: 1.5;
+  color: rgba(246, 240, 233, 0.72);
+  line-height: 1.6;
 }
 
 .radioGrid {
@@ -58,7 +55,7 @@
 
 .cardTitle {
   margin: 0 0 18px;
-  color: #111827;
+  color: #f7f2ec;
   font-size: 22px;
   letter-spacing: -0.03em;
 }
@@ -74,22 +71,22 @@
   justify-content: space-between;
   gap: 16px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .statRow dt {
-  color: #4b5563;
+  color: rgba(246, 240, 233, 0.72);
 }
 
 .statRow dd {
   margin: 0;
-  color: #111827;
+  color: #ffffff;
   font-weight: 800;
 }
 
 .socketHint {
   margin: 16px 0 0;
-  color: #6b7280;
+  color: rgba(246, 240, 233, 0.62);
   font-size: 13px;
   line-height: 1.45;
 }
@@ -99,8 +96,8 @@
   gap: 12px;
   margin: 0;
   padding-left: 20px;
-  color: #374151;
-  line-height: 1.5;
+  color: rgba(246, 240, 233, 0.84);
+  line-height: 1.55;
 }
 
 .invitationPanel {
@@ -118,7 +115,7 @@
   justify-content: space-between;
   gap: 20px;
   padding: 14px 0;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .invitationItem:last-child {
@@ -127,7 +124,7 @@
 
 .invitationItem p {
   margin: 4px 0 0;
-  color: #4b5563;
+  color: rgba(246, 240, 233, 0.72);
 }
 
 .invitationActions {
@@ -135,25 +132,10 @@
   gap: 10px;
 }
 
-.radioLink {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-
-.radioUnavailable {
-  display: block;
-  color: inherit;
-  cursor: not-allowed;
-}
-
-.radioLink:focus-visible {
-  outline: 3px solid #111827;
-  outline-offset: 5px;
-  border-radius: 18px;
-}
-
 .radioCard {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   min-height: 230px;
   display: flex;
   flex-direction: column;
@@ -163,16 +145,32 @@
     border-color 0.16s ease;
 }
 
-.radioLink:hover .radioCard {
+.radioCard:hover {
   transform: translateY(-3px);
-  border-color: #111827;
-  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.12);
+}
+
+.radioCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, rgba(141, 183, 255, 0.1), transparent 34%, rgba(137, 224, 198, 0.06) 62%, transparent 78%, rgba(185, 164, 255, 0.08)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 34%, rgba(255, 255, 255, 0.02));
+  opacity: 0.92;
+}
+
+.radioCard > * {
+  position: relative;
+  z-index: 1;
 }
 
 .radioCardFull {
-  border-color: #d1d5db;
-  background: #f9fafb;
-  color: #6b7280;
+  border-color: rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(180deg, rgba(255, 252, 248, 0.14), rgba(255, 252, 248, 0.07)),
+    rgba(18, 34, 30, 0.28);
+  color: rgba(246, 240, 233, 0.62);
 }
 
 .radioTopLine {
@@ -184,39 +182,81 @@
 }
 
 .radioName {
-  color: #111827;
+  color: #ffffff;
   font-size: 20px;
   font-weight: 800;
   letter-spacing: -0.03em;
 }
 
 .radioWpm {
-  border: 1px solid #111827;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
   padding: 5px 10px;
-  color: #111827;
+  color: #ffffff;
   font-size: 13px;
   font-weight: 800;
 }
 
 .radioDescription {
   margin: 0;
-  color: #4b5563;
-  line-height: 1.5;
+  color: rgba(246, 240, 233, 0.74);
+  line-height: 1.55;
 }
 
 .radioFooter {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 16px;
   margin-top: auto;
   padding-top: 24px;
-  color: #111827;
+  color: #ffffff;
   font-weight: 700;
 }
 
-.radioFullBadge {
-  color: #92400e;
+.radioCapacity {
+  min-width: 0;
+}
+
+.radioAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 88px;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid rgba(175, 198, 255, 0.34);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(141, 183, 255, 0.22), rgba(185, 164, 255, 0.16)),
+    rgba(255, 255, 255, 0.05);
+  color: #f7f2ec;
+  text-decoration: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 10px 20px rgba(4, 14, 12, 0.12);
+  transition:
+    transform 0.16s ease,
+    border-color 0.16s ease,
+    background 0.16s ease;
+}
+
+.radioAction:hover {
+  transform: translateY(-1px);
+  border-color: rgba(175, 198, 255, 0.5);
+  background:
+    linear-gradient(180deg, rgba(141, 183, 255, 0.28), rgba(185, 164, 255, 0.22)),
+    rgba(255, 255, 255, 0.06);
+}
+
+.radioActionDisabled {
+  border-color: rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.08)),
+    rgba(255, 255, 255, 0.04);
+  color: rgba(246, 240, 233, 0.72);
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 @media (max-width: 900px) {

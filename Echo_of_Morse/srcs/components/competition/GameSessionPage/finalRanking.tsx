@@ -1,8 +1,8 @@
-import Link from "next/link";
 import Ranking from "./ranking";
 import styles from "./css/finalRanking.module.css";
 import type { Player } from "./gameSessionType";
 import { useI18n } from "@/lib/i18n";
+import BackLink from "@/components/ui/back-link";
 
 type FinalRankingProps = {
 	radioId: string;
@@ -34,9 +34,9 @@ export default function FinalRanking({
 			<Ranking players={players} status="final" />
 
 			<div className={styles.actions}>
-				<Link href={`/competition/radio/${radioId}`}>
+				<BackLink href={`/competition/radio/${radioId}`}>
 					{t.backToRadioLobby}
-				</Link>
+				</BackLink>
 			</div>
 		</section>
 	);

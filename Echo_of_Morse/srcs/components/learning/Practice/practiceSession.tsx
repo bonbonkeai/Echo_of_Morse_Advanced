@@ -4,7 +4,7 @@
 import { useI18n } from "@/lib/i18n";
 import { useEffect, useState } from "react";
 import styles from "@/components/learning/css/PracticeSession.module.css";
-import Link from "next/link";
+import BackLink from "@/components/ui/back-link";
 
 import { PracticeAudio } from "./practiceAudio";
 import PracticeResult from "./practiceResult";
@@ -267,9 +267,7 @@ export default function PracticeSession({ levelId }: { levelId: number }) {
 			<div className={styles.practiceHeader}>
 				{/* ------------ titre du niveau ------------ */}
 				<div className={styles.practiceTitleBlock}>
-					<Link className={styles.backToLevelsButton} href="/learning/levels">
-						‹
-					</Link>
+					<BackLink href="/learning/levels">{t.backToLevels}</BackLink>
 
 					<h1 id="practice-title" className={styles.practiceTitle}>
 						{t.level} {safeLevelId}

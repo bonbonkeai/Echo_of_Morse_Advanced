@@ -13,6 +13,7 @@ const zh = {
 		levelPrefix: "等级",
 		friends: "好友",
 		joined: "注册时间",
+		backToLearning: "返回学习主页",
 		//------- oauth ------- 
 		connectedAccounts: "绑定账号",
 		notConnected: "未绑定",
@@ -88,7 +89,7 @@ const zh = {
 	},
 
 	dashboard: {
-		modulesLabel: "仪表盘模块",
+		modulesLabel: "主页模块",
 
 		openModule: "打开模块 →",
 
@@ -105,6 +106,19 @@ const zh = {
 	home: {
 		onlineNow: "当前在线",
 		usersConnected: "{count} 位用户在线",
+
+		heroEyebrow: "摩斯学习工作台",
+		heroTitle: "摩斯之声",
+		heroLead: "从入门练习到实时对战，所有流程都在这里完成。",
+		heroPrimaryAction: "开始学习",
+		heroSecondaryAction: "进入比赛",
+		signalPreviewLabel: "信号预览",
+		signalPreviewTitle: "学习、聊天与无线电对战",
+		signalPreviewDescription: "信号、进度和对战状态会同步更新。",
+		heroPillOne: "间隔复习",
+		heroPillTwo: "实时聊天",
+		heroPillThree: "无线电大厅",
+		heroPillFour: "好友状态",
 
 		introTitle: "摩斯项目？",
 		introDescription: "摩斯码在这里成为学习信号、节奏、交流和互动的一种方式。",
@@ -239,6 +253,7 @@ const zh = {
 		
 		//------------------ app/learning/levels/page.tsx ------------------
 		levelsPageDescription: "学习路径包含字母、数字和标点。每个等级都使用混合练习：有时识别摩斯码信号，有时用键盘输入摩斯码。",
+		backToLearning: "返回学习主页",
 		breadcrumbLearning: "学习",
 		breadcrumbLevels: "等级",
 		
@@ -251,6 +266,10 @@ const zh = {
 		newCharacters: "新字符",
 		questions: "题目",
 		pass: "通过条件",
+		reviewFrom: "复习范围",
+		newRatio: "新字符",
+		reviewRatio: "复习字符",
+		actionHint: "点击开始进入这一关",
 		locked: "未解锁",
 		startPractice: "开始练习",
 
@@ -803,7 +822,7 @@ const zh = {
 
 	competitionRadio: {
 		//--------- RadioHeader.tsx ---------
-		backToCompetition: "← 返回比赛页",
+		backToCompetition: "返回比赛页",
 		radioLobby: "无线电大厅",
 		lobbyDescription: "{description} 这个大厅中的玩家可以加入准备队列，并一起开始实时摩斯码解码游戏。",
 		radioInformation: "无线电信息",

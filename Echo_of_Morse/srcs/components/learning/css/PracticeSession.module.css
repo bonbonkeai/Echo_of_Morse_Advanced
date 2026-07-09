@@ -20,7 +20,7 @@
 
 .practiceTitle{
 	margin: 0;
-	color: #111111;
+	color: #f7f2ec;
 	font-size: clamp(1.8rem, 3vw, 2.6rem);
 	line-height: 1;
 	font-weight: 850;
@@ -31,20 +31,22 @@
 	min-width: 130px;
 	gap: 4px;
 	padding: 14px 16px;
-	border: 1px solid #e5e5e5;
+	border: 1px solid rgba(255, 255, 255, 0.16);
 	border-radius: 18px;
-	background: #ffffff;
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+    rgba(18, 34, 30, 0.32);
 	text-align: right;
 }
 
 .scoreBox span {
-	color: #666666;
+	color: rgba(246, 240, 233, 0.66);
 	font-size: 0.82rem;
 	font-weight: 700;
 }
 
 .scoreBox strong {
-	color: #111111;
+	color: #f7f2ec;
 	font-size: 1.4rem;
 	font-weight: 850;
 }
@@ -56,25 +58,28 @@
 }
 
 .backToLevelsButton {
-	display: flex;
-	width: 42px;
-	height: 42px;
+	display: inline-flex;
 	align-items: center;
-	justify-content: center;
-	border: 1px solid #dddddd;
+	width: fit-content;
+	min-height: 42px;
+	padding: 8px 14px;
+	border: 1px solid rgba(255, 255, 255, 0.16);
 	border-radius: 999px;
-	background: #ffffff;
-	color: #111111;
-	font-size: 1.45rem;
-	font-weight: 800;
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
+	color: #f7f2ec;
+	font-size: 0.92rem;
+	font-weight: 700;
 	line-height: 1;
 	text-decoration: none;
-	transform: translateX(-24px);
 }
 
 .backToLevelsButton:hover {
-	border-color: #111111;
-	background: #f5f5f5;
+	border-color: rgba(175, 198, 255, 0.34);
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)),
+    rgba(255, 255, 255, 0.08);
 }
 
 /* ============ shared ============ */
@@ -82,15 +87,21 @@
 .answerPanel,
 .settingsPanel,
 .resultPanel {
-	border: 1px solid #e5e5e5;
+	border: 1px solid rgba(255, 255, 255, 0.16);
 	border-radius: 24px;
-	background: #ffffff;
-	box-shadow: 0 18px 42px rgba(0, 0, 0, 0.05);
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+    rgba(18, 34, 30, 0.32);
+	box-shadow:
+    0 18px 42px rgba(4, 14, 12, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
 .secondaryAction {
-	background: #ffffff;
-	color: #111111;
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
+	color: #f7f2ec;
 }
 
 .primaryAction {
@@ -113,10 +124,10 @@
 	min-height: 30px;
 	align-items: center;
 	padding: 0 12px;
-	border: 1px solid #dddddd;
+	border: 1px solid rgba(255, 255, 255, 0.16);
 	border-radius: 999px;
-	background: #f5f5f5;
-	color: #333333;
+	background: rgba(255, 255, 255, 0.06);
+	color: rgba(246, 240, 233, 0.84);
 	font-size: 0.78rem;
 	font-weight: 800;
 	text-transform: uppercase;
@@ -127,9 +138,11 @@
 	width: 150px;
 	height: 150px;
 	place-items: center;
-	border: 1px solid #eeeeee;
+	border: 1px solid rgba(255, 255, 255, 0.16);
 	border-radius: 50%;
-	background: #f7f7f7;
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
 	font-size: 4rem;
 	filter: grayscale(1);
 	transition:
@@ -140,8 +153,8 @@
 }
 
 .bulbOn {
-	background: #fff2a8;
-	box-shadow: 0 0 42px rgba(255, 211, 67, 0.72);
+	background: linear-gradient(180deg, rgba(255, 230, 122, 0.92), rgba(255, 210, 90, 0.86));
+	box-shadow: 0 0 42px rgba(255, 211, 67, 0.42);
 	filter: grayscale(0);
 	transform: scale(1.04);
 }
@@ -155,18 +168,19 @@
 	width: 170px;
 	height: 170px;
 	place-items: center;
-	border: 1px solid #111111;
+	border: 1px solid rgba(255, 255, 255, 0.16);
 	border-radius: 24px;
-	background: #111111;
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(18, 34, 30, 0.88);
 	color: #ffffff;
 	font-size: 5rem;
 	font-weight: 900;
 }
 
 .promptText {
-	max-width: 520px;
 	margin: 0;
-	color: #555555;
+	color: rgba(246, 240, 233, 0.74);
 	font-size: 1rem;
 	line-height: 1.7;
 }
@@ -177,9 +191,9 @@
 .secondaryAction {
 	min-height: 44px;
 	padding: 0 16px;
-	border: 1px solid #111111;
+	border: 1px solid rgba(175, 198, 255, 0.38);
 	border-radius: 999px;
-	background: #111111;
+	background: linear-gradient(135deg, rgba(141, 183, 255, 0.94), rgba(185, 164, 255, 0.96));
 	color: #ffffff;
 	font-size: 0.92rem;
 	font-weight: 800;
@@ -188,16 +202,18 @@
 
 .keyGrid button:disabled,
 .secondaryAction:disabled {
-	border-color: #dddddd;
-	background: #eeeeee;
-	color: #888888;
+	border-color: rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.04);
+	color: rgba(246, 240, 233, 0.42);
 	cursor: not-allowed;
 }
 
 /* bouton pour point et trait */
 .keyGrid .morseKey {
-	background: #ffffff;
-	color: #111111;
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
+	color: #f7f2ec;
 	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 	font-size: 1.45rem;
 	line-height: 1;
@@ -205,9 +221,9 @@
 
 /*bouton pour supp*/
 .keyGrid .deleteKey {
-	border-color: #d6d6d6;
-	background: #eeeeee;
-	color: #555555;
+	border-color: rgba(255, 255, 255, 0.16);
+	background: rgba(255, 255, 255, 0.04);
+	color: rgba(246, 240, 233, 0.72);
 }
 
 .feedback,
@@ -220,18 +236,18 @@
 }
 
 .hint {
-	background: #f5f5f5;
-	color: #555555;
+	background: rgba(255, 255, 255, 0.06);
+	color: rgba(246, 240, 233, 0.72);
 }
 
 .feedbackGood {
-	background: #dcfce7;
-	color: #166534;
+	background: rgba(143, 224, 198, 0.12);
+	color: #8fe0c6;
 }
 
 .feedbackBad {
-	background: #fee2e2;
-	color: #991b1b;
+	background: rgba(255, 145, 145, 0.12);
+	color: #ffb3b3;
 }
 
 /* reponse retournee */
@@ -261,13 +277,15 @@
 	display: grid;
 	gap: 10px;
 	padding: 18px;
-	border: 1px solid #eeeeee;
+	border: 1px solid rgba(255, 255, 255, 0.12);
 	border-radius: 18px;
-	background: #fafafa;
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)),
+    rgba(255, 255, 255, 0.04);
 }
 
 .answerBox span {
-	color: #666666;
+	color: rgba(246, 240, 233, 0.66);
 	font-size: 0.78rem;
 	font-weight: 800;
 	text-transform: uppercase;
@@ -275,7 +293,7 @@
 
 .answerBox strong {
 	min-height: 48px;
-	color: #111111;
+	color: #f7f2ec;
 	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 	font-size: 2rem;
 	font-weight: 900;
@@ -310,17 +328,21 @@
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
-	color: #333333;
+	color: rgba(246, 240, 233, 0.86);
 	font-size: 0.92rem;
 	font-weight: 800;
 }
 
 /* ============================================= cheatSheet ============================================= */
 .cheatSheet {
-	border: 1px solid #e5e5e5;
+	border: 1px solid rgba(255, 255, 255, 0.12);
 	border-radius: 18px;
-	background: #ffffff;
-	box-shadow: 0 18px 42px rgba(0, 0, 0, 0.05);
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+    rgba(18, 34, 30, 0.32);
+	box-shadow:
+    0 18px 42px rgba(4, 14, 12, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
 .cheatSheetToggle {
@@ -332,7 +354,7 @@
 	padding: 0 18px;
 	border: 0;
 	background: transparent;
-	color: #111111;
+	color: #f7f2ec;
 	font-size: 1rem;
 	font-weight: 850;
 	cursor: pointer;
@@ -341,7 +363,7 @@
 
 .cheatSheetArrow {
 	width: 1em;
-	color: #555555;
+	color: rgba(246, 240, 233, 0.66);
 	font-size: 0.9rem;
 }
 
@@ -362,9 +384,11 @@
 	gap: 12px;
 	min-height: 58px;
 	padding: 12px 14px;
-	border: 1px solid #eeeeee;
+	border: 1px solid rgba(255, 255, 255, 0.12);
 	border-radius: 14px;
-	background: #fafafa;
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)),
+    rgba(255, 255, 255, 0.04);
 }
 
 .cheatSheetItem strong {
@@ -373,14 +397,14 @@
 	height: 38px;
 	place-items: center;
 	border-radius: 10px;
-	background: #111111;
+	background: linear-gradient(135deg, rgba(141, 183, 255, 0.94), rgba(185, 164, 255, 0.96));
 	color: #ffffff;
 	font-size: 1.05rem;
 	font-weight: 900;
 }
 
 .cheatSheetItem span {
-	color: #333333;
+	color: rgba(246, 240, 233, 0.86);
 	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 	font-size: 1rem;
 	font-weight: 850;
@@ -393,10 +417,12 @@
 	align-items: center;
 	gap: 6px;
 	padding: 0 12px;
-	border: 1px solid #dddddd;
+	border: 1px solid rgba(255, 255, 255, 0.16);
 	border-radius: 999px;
-	background: #ffffff;
-	color: #111111;
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
+	color: #f7f2ec;
 	font-size: 0.85rem;
 	font-weight: 800;
 	cursor: pointer;
@@ -415,8 +441,10 @@
 }
 
 .cheatSheetSoundButton:hover {
-	border-color: #111111;
-	background: #f5f5f5;
+	border-color: rgba(175, 198, 255, 0.34);
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)),
+    rgba(255, 255, 255, 0.08);
 }
 
 /* ============================================= practiceResult.tsx ============================================= */
@@ -424,7 +452,7 @@
 /* description pour indiquer le niveau */
 .kicker {
 	margin: 0;
-	color: #666666;
+	color: rgba(246, 240, 233, 0.66);
 	font-size: 0.82rem;
 	font-weight: 800;
 	text-transform: uppercase;
@@ -433,7 +461,7 @@
 
 .resultTitle {
 	margin: 0;
-	color: #111111;
+	color: #f7f2ec;
 	font-size: clamp(1.8rem, 3vw, 2.6rem);
 	line-height: 1;
 	font-weight: 850;
@@ -471,20 +499,24 @@
 }
 
 .resultBackButton {
-	border: 1px solid #d6d6d6;
-	background: #eeeeee;
-	color: #333333;
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
+	color: rgba(246, 240, 233, 0.76);
 }
 
 .resultRetryButton {
-	border: 1px solid #d6d6d6;
-	background: #ffffff;
-	color: #555555;
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
+	color: rgba(246, 240, 233, 0.76);
 }
 
 .resultNextButton {
-	border: 1px solid #111111;
-	background: #111111;
+	border: 1px solid rgba(175, 198, 255, 0.38);
+	background: linear-gradient(135deg, rgba(141, 183, 255, 0.94), rgba(185, 164, 255, 0.96));
 	color: #ffffff;
 }
 
@@ -498,7 +530,6 @@
 .resultText {
 	display: grid;
 	gap: 4px;
-	max-width: 620px;
 	text-align: center;
 }
 
@@ -510,10 +541,12 @@
 }
 
 .resultStats div {
-	padding: 16px;
-	border: 1px solid #eeeeee;
-	border-radius: 18px;
-	background: #fafafa;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)),
+    rgba(255, 255, 255, 0.04);
 }
 
 .resultStats span,
@@ -522,14 +555,14 @@
 }
 
 .resultStats span {
-	color: #666666;
+	color: rgba(246, 240, 233, 0.66);
 	font-size: 0.8rem;
 	font-weight: 800;
 }
 
 .resultStats strong {
 	margin-top: 8px;
-	color: #111111;
+	color: #f7f2ec;
 	font-size: 1.35rem;
 	font-weight: 900;
 }

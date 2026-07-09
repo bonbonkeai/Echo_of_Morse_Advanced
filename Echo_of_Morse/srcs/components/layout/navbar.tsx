@@ -6,6 +6,7 @@ import LanguageSwitcher from "@/components/layout/language-switcher";
 import styles from "./navbar.module.css";
 
 import { signOut, useSession } from "next-auth/react";
+import { useEffect, useRef, useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import { useNotifications } from "@/components/notifications/NotificationProvider";
 import type { NotificationFriendMessage } from "@/types/notifications";
@@ -70,6 +71,10 @@ export default function Navbar() {
   const router = useRouter();
   const { data: session, status } = useSession();
   const isLoggedIn = status === "authenticated";
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const notificationCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(
+    null
+  );
 
   const {
     totalGlobalUnreadCount,
@@ -106,6 +111,33 @@ export default function Navbar() {
     groupedFriendNotifications.length > 0 ||
     unreadSystemMessageCount > 0;
 
+  useEffect(() => {
+    if (!isNotificationsOpen) {
+      if (notificationCloseTimer.current) {
+        clearTimeout(notificationCloseTimer.current);
+        notificationCloseTimer.current = null;
+      }
+
+      return;
+    }
+
+    if (notificationCloseTimer.current) {
+      clearTimeout(notificationCloseTimer.current);
+    }
+
+    notificationCloseTimer.current = setTimeout(() => {
+      setIsNotificationsOpen(false);
+      notificationCloseTimer.current = null;
+    }, 2000);
+
+    return () => {
+      if (notificationCloseTimer.current) {
+        clearTimeout(notificationCloseTimer.current);
+        notificationCloseTimer.current = null;
+      }
+    };
+  }, [isNotificationsOpen]);
+
   return (
     <header className={styles.header}>
       <Link href="/" className={styles.logo}>
@@ -140,20 +172,25 @@ export default function Navbar() {
             </button>
 
             <div className={styles.notificationWrapper}>
-              <details className={styles.notificationDetails}>
-                <summary
-                  className={styles.notificationTrigger}
-                  aria-label={t.openNotifications}
-                >
-                  <span className={styles.notificationIcon}>🔔</span>
+              <button
+                type="button"
+                className={styles.notificationTrigger}
+                aria-label={t.openNotifications}
+                aria-expanded={isNotificationsOpen}
+                onClick={() =>
+                  setIsNotificationsOpen((current) => !current)
+                }
+              >
+                <span className={styles.notificationIcon} aria-hidden="true" />
 
-                  {totalGlobalUnreadCount > 0 ? (
-                    <span className={styles.notificationBadge}>
-                      {formatBadgeCount(totalGlobalUnreadCount)}
-                    </span>
-                  ) : null}
-                </summary>
+                {totalGlobalUnreadCount > 0 ? (
+                  <span className={styles.notificationBadge}>
+                    {formatBadgeCount(totalGlobalUnreadCount)}
+                  </span>
+                ) : null}
+              </button>
 
+              {isNotificationsOpen ? (
                 <div className={styles.notificationPanel}>
                   <div className={styles.notificationHeader}>
                     <strong>{t.notifications}</strong>
@@ -287,7 +324,7 @@ export default function Navbar() {
                     </div>
                   ) : null}
                 </div>
-              </details>
+              ) : null}
             </div>
           </>
         ) : (

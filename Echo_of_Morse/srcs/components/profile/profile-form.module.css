@@ -23,13 +23,13 @@
   display: grid;
   gap: 12px;
   padding-top: 20px; /*laisse des espace pour le cotenue et la ligne*/
-  border-top: 1px solid #e5e7eb; /*la ligne separee*/
+  border-top: 1px solid rgba(255, 255, 255, 0.12); /*la ligne separee*/
 }
 
 /* titre du chaque bloc */
 .sectionTitle {
   margin: 0;
-  color: #111827;
+  color: #f7f2ec;
   font-size: 18px;
   font-weight: 800;
 }
@@ -37,7 +37,7 @@
 /* mode pour le text du biogranphie */
 .bio {
   margin: 0;
-  color: #4b5563;
+  color: rgba(246, 240, 233, 0.76);
   font-size: 15px;
   line-height: 1.6;
 }
@@ -51,10 +51,29 @@
 
 /* mode pour les petite cartes */
 .statItem {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding: 16px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 12px;
-  background: #f9fafb;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 248, 0.14), rgba(255, 252, 248, 0.06)),
+    rgba(18, 34, 30, 0.28);
+  box-shadow:
+    0 16px 30px rgba(4, 14, 12, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.statItem::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, rgba(141, 183, 255, 0.1), transparent 36%, rgba(137, 224, 198, 0.06) 64%, transparent 80%, rgba(185, 164, 255, 0.08)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 28%, rgba(255, 255, 255, 0.02));
+  opacity: 0.92;
 }
 
 .editFields {
@@ -71,26 +90,45 @@
 
 /* mode pour chaque conteneur */
 .connectedRow {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: space-between; /*coller sur deux cotes*/
   gap: 12px;
   padding: 14px 16px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 12px;
-  background: #f9fafb;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 248, 0.14), rgba(255, 252, 248, 0.06)),
+    rgba(18, 34, 30, 0.28);
+  box-shadow:
+    0 16px 30px rgba(4, 14, 12, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.connectedRow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, rgba(141, 183, 255, 0.1), transparent 36%, rgba(137, 224, 198, 0.06) 64%, transparent 80%, rgba(185, 164, 255, 0.08)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 28%, rgba(255, 255, 255, 0.02));
+  opacity: 0.92;
 }
 
 .providerName {
 	display: block;
-	color: #111827;
+	color: #f7f2ec;
 	font-size: 16px;
 	font-weight: 800;
 }
 
 .providerDescription {
 	margin: 4px 0 0 0;
-	color: #6b7280;
+	color: rgba(246, 240, 233, 0.68);
 	font-size: 12px;
 	font-weight: 600;
 }
@@ -106,14 +144,17 @@
 
 /* avatar */
 .avatar {
-	display: grid;
-	place-items: center; 				/* centre les éléments horizontalement et verticalement */
-	flex: 0 0 auto; 					/* empêche l'avatar de se redimensionner, maintenir le height et width */
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center; 				/* centre les éléments horizontalement et verticalement */
+  flex: 0 0 auto; 					/* empêche l'avatar de se redimensionner, maintenir le height et width */
 	width: 96px;
 	height: 96px;
-	border: 1px solid #111827;		/* bordure sombre*/
+	border: 1px solid rgba(255, 255, 255, 0.16);		/* bordure sombre*/
 	border-radius: 16px; 				/* coins arrondis */
-	background: #111827;
+	background:
+    linear-gradient(135deg, rgba(141, 183, 255, 0.94), rgba(185, 164, 255, 0.96));
 	color: #ffffff;
 	font-size: 42px;					/* taille du texte */
 	font-weight: 800;					/* l’épaisseur du texte */	
@@ -127,14 +168,14 @@
 }
 
 .fileButton {
-	color: #4b5563;
+	color: rgba(246, 240, 233, 0.72);
 	font-size: 12px;
 	font-weight: 600;
 	cursor: pointer;			/* indique que c'est cliquable */
 }
 
 .fileButton:hover {
-	color: #111827;
+	color: #f7f2ec;
 }
 
 .fileInput {
@@ -151,7 +192,7 @@
 /* titre d'utilisateur */
 .title {
 	margin: 0; 			/* pas de marge pour le titre */
-	color: #111827;
+	color: #f7f2ec;
 	font-size: 40px;
 	font-weight: 800;
 }
@@ -159,7 +200,7 @@
 /* email de l'utilisateur */
 .email {
 	margin: 8px 0 0 0;
-	color: #4b5563;
+	color: rgba(246, 240, 233, 0.72);
 	font-size: 16px;
 	overflow-wrap: anywhere; /* permet de casser les mots longs pour éviter le débordement */
 }
@@ -169,7 +210,7 @@
 .metaLabel {
 	display: block;			/* L’élément prend toute la largeur disponible et passe à la ligne. */
 	margin-bottom: 6px;		/* espace entre le label et la valeur */
-	color: #6b7280;
+	color: rgba(246, 240, 233, 0.66);
 	font-size: 13px;
 	font-weight: 700;
 }
@@ -177,7 +218,7 @@
 /* small values */
 .metaValue {
 	display: block;
-	color: #111827;
+	color: #f7f2ec;
 	font-size: 18px;
 	font-weight: 800;
 }
@@ -201,7 +242,7 @@
 
 .errorText {
 	margin: 0;
-	color: #b91c1c;
+	color: #ffb3b3;
 	font-size: 14px;
 	font-weight: 700;
 }

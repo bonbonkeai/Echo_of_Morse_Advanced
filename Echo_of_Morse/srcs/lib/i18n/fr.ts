@@ -13,6 +13,7 @@ const fr = {
 		levelPrefix: "Niveau",
 		friends: "Amis",
 		joined: "Inscription",
+		backToLearning: "Retour à l'apprentissage",
 		//------- oauth ------- 
 		connectedAccounts: "Comptes associés",
 		notConnected: "Non associé",
@@ -87,7 +88,7 @@ const fr = {
 	},
 
 	dashboard: {
-		modulesLabel: "Modules du tableau de bord",
+		modulesLabel: "Modules d'accueil",
 
 		openModule: "Ouvrir le module →",
 
@@ -104,6 +105,19 @@ const fr = {
 	home: {
 		onlineNow: "En ligne maintenant",
 		usersConnected: "{count} utilisateur(s) connecté(s)",
+
+		heroEyebrow: "Atelier Morse",
+		heroTitle: "Échos de Morse",
+		heroLead: "Des premiers exercices aux matchs en direct, tout passe par un même espace.",
+		heroPrimaryAction: "Commencer l'apprentissage",
+		heroSecondaryAction: "Entrer en compétition",
+		signalPreviewLabel: "Aperçu du signal",
+		signalPreviewTitle: "Apprentissage, chat et matchs radio",
+		signalPreviewDescription: "Les signaux, la progression et l'état des matchs restent synchronisés.",
+		heroPillOne: "Répétition espacée",
+		heroPillTwo: "Chat en temps réel",
+		heroPillThree: "Lobbys radio",
+		heroPillFour: "Statut des amis",
 
 		introTitle: "Un projet Morse ?",
 		introDescription: "Le code Morse devient ici une façon d'apprendre les signaux, le rythme, la communication et l'interaction.",
@@ -237,6 +251,7 @@ const fr = {
 
 		//------------------ app/learning/levels/page.tsx ------------------
 		levelsPageDescription: "Le parcours couvre les lettres, les chiffres et la ponctuation. Chaque niveau utilise une pratique mixte : parfois vous décodez des signaux Morse, parfois vous encodez des caractères au clavier.",
+		backToLearning: "Retour à l'apprentissage",
 		breadcrumbLearning: "Apprentissage",
 		breadcrumbLevels: "Niveaux",
 
@@ -249,6 +264,10 @@ const fr = {
 		newCharacters: "Nouveaux caractères",
 		questions: "Questions",
 		pass: "Condition de réussite",
+		reviewFrom: "Révision depuis",
+		newRatio: "Nouveaux caractères",
+		reviewRatio: "Caractères de révision",
+		actionHint: "Commencer la pratique de ce niveau",
 		locked: "Verrouillé",
 		startPractice: "Commencer",
 
@@ -808,7 +827,7 @@ const fr = {
 
 	competitionRadio: {
 		//--------- RadioHeader.tsx ---------
-		backToCompetition: "← Retour à la compétition",
+		backToCompetition: "Retour à la compétition",
 		radioLobby: "Lobby radio",
 		lobbyDescription: "{description} Les joueurs de ce lobby peuvent rejoindre la file Prêt et lancer ensemble une session de décodage Morse en temps réel.",
 		radioInformation: "Informations radio",

@@ -29,9 +29,11 @@ interface I18nContextType {
 
 //createContext = un peu comme une variable globale（un box global）, les contenus sont accessibles dans tous
 //dans createContext(...) = les valeurs par defaut
+const DEFAULT_LANGUAGE: Language = "zh";
+
 const I18nContext = createContext<I18nContextType>({
-	language: "fr",
-	dictionary: fr,
+	language: DEFAULT_LANGUAGE,
+	dictionary: zh,
 	setLanguage: () => {},
 });
 
@@ -47,12 +49,14 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
 	//useState = cree une variable geree par React et une fonction pour la modifier
 	//il faut utiliser cette fonction pour que React mette a jour la page quand la variable change
-	const [selectedLanguage, setSelectedLanguage] = useState<Language>("fr");
+	const [selectedLanguage, setSelectedLanguage] = useState<Language>(DEFAULT_LANGUAGE);
 
-	//---------------- 1. lire la langue dans localStorage ----------------
+	//---------------- 1. synchroniser la langue du document ----------------
 	useEffect(() => {
-		// localStorage --> un petit stockage du navigateur
-		// getItem --> lit la cle "language"
+		document.documentElement.lang = selectedLanguage;
+	}, [selectedLanguage]);
+
+	useEffect(() => {
 		const savedLanguage = window.localStorage.getItem("language");
 
 		if (savedLanguage === "en" || savedLanguage === "fr" || savedLanguage === "zh") {
@@ -85,4 +89,3 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 export function useI18n() {
   return useContext(I18nContext);
 }
-

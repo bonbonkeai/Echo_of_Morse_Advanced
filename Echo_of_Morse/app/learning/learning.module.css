@@ -3,20 +3,20 @@
   min-height: calc(100vh - 96px);
   padding: 0 0 48px;
   color: var(--foreground);
-  background: var(--background);
 }
 
 .title {
-  font-size: 36px;
+  font-size: clamp(42px, 6vw, 72px);
   font-weight: 800;
   margin: 0 0 16px 0;
-  color: #111827;
+  color: #f7f2ec;
+  letter-spacing: -0.05em;
+  line-height: 0.96;
 }
 
 .description {
   font-size: 16px;
   line-height: 1.8;
   margin: 0 0 24px 0;
-  color: #0d0d0d;
+  color: rgba(246, 240, 233, 0.76);
 }
-

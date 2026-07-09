@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import styles from "@/components/learning/css/PracticeSession.module.css";
 import { PracticeAudio } from "@/components/learning/Practice/practiceAudio";
+import BackLink from "@/components/ui/back-link";
 import PracticeAnswer from "@/components/learning/Practice/practiceAnswer";
 import PracticeCheatSheet from "@/components/learning/Practice/practiceCheatSheet";
 import PracticePrompt from "@/components/learning/Practice/practicePrompt";
@@ -293,9 +294,7 @@ export default function ReviewSession() {
     <section className={styles.practiceShell} aria-labelledby="review-title">
       <div className={styles.practiceHeader}>
         <div className={styles.practiceTitleBlock}>
-          <Link className={styles.backToLevelsButton} href="/learning">
-            ‹
-          </Link>
+          <BackLink href="/learning">{reviewText.backToLearning}</BackLink>
           <div>
             <h1 id="review-title" className={styles.practiceTitle}>
               {reviewText.title}

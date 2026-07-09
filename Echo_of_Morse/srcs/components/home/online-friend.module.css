@@ -14,14 +14,14 @@
   margin: 0;
   font-size: 20px;
   font-weight: 700;
-  color: #111827;
+  color: #f7f2ec;
 }
 
 .description {
   margin: 6px 0 0 0;
   font-size: 14px;
   line-height: 1.5;
-  color: #6b7280;
+  color: rgba(246, 240, 233, 0.72);
 }
 
 .list {
@@ -36,9 +36,9 @@
   display: grid;
   gap: 10px;
   padding: 12px;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  background-color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .profileLink {
@@ -70,7 +70,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #111827;
+  background: linear-gradient(135deg, rgba(141, 183, 255, 0.96), rgba(137, 224, 198, 0.86));
   color: #ffffff;
   font-size: 16px;
   font-weight: 700;
@@ -84,7 +84,7 @@
 
 .name {
   overflow: hidden;
-  color: #111827;
+  color: #ffffff;
   font-size: 14px;
   font-weight: 700;
   text-overflow: ellipsis;
@@ -93,7 +93,7 @@
 
 .username {
   overflow: hidden;
-  color: #6b7280;
+  color: rgba(246, 240, 233, 0.7);
   font-size: 13px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -111,8 +111,8 @@
   justify-content: center;
   min-height: 38px;
   padding: 8px 12px;
-  border-radius: 10px;
-  background-color: #111827;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
   font-size: 14px;
   font-weight: 600;
@@ -120,25 +120,24 @@
 }
 
 .chatLink:hover {
-  background-color: #1f2937;
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .empty {
   margin: 0;
-  color: #6b7280;
+  color: rgba(246, 240, 233, 0.72);
   font-size: 14px;
   line-height: 1.5;
 }
 
-.viewAllLink {
+.viewAllButton {
   display: inline-flex;
   margin-top: auto;
-  color: #111827;
-  font-size: 14px;
-  font-weight: 700;
+  align-self: flex-start;
   text-decoration: none;
+  color: #ffffff;
 }
 
-.viewAllLink:hover {
-  text-decoration: underline;
+.viewAllButton:hover {
+  text-decoration: none;
 }

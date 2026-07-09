@@ -30,7 +30,7 @@ export default function LevelCard({ level, progress }: LevelCardProps) {
       className={`${styles.levelCard} ${isLocked ? styles.levelCardLocked : ""}`}
       aria-labelledby={`level-${level.level}-title`}
     >
-      <div>
+      <div className={styles.levelBody}>
         <div className={styles.levelTop}>
           <h2 id={`level-${level.level}-title`} className={styles.levelTitle}>
             {t.levelLabel.replace("{level}", String(level.level))}
@@ -44,6 +44,23 @@ export default function LevelCard({ level, progress }: LevelCardProps) {
             {statusLabel}
           </span>
         </div>
+
+        <section className={styles.levelSummary} aria-label={t.reviewFrom}>
+          <div className={styles.summaryItem}>
+            <span className={styles.summaryLabel}>{t.reviewFrom}</span>
+            <strong className={styles.summaryValue}>{level.reviewFrom}</strong>
+          </div>
+
+          <div className={styles.summaryItem}>
+            <span className={styles.summaryLabel}>{t.newRatio}</span>
+            <strong className={styles.summaryValue}>{level.newRatio}</strong>
+          </div>
+
+          <div className={styles.summaryItem}>
+            <span className={styles.summaryLabel}>{t.reviewRatio}</span>
+            <strong className={styles.summaryValue}>{level.reviewRatio}</strong>
+          </div>
+        </section>
 
         <div className={styles.characterList} aria-label={t.newCharacters}>
           {level.newCharacters.map((character) => (
@@ -66,18 +83,22 @@ export default function LevelCard({ level, progress }: LevelCardProps) {
         </dl>
       </div>
 
-      {isLocked ? (
-        <button className={styles.disabledButton} type="button" disabled>
-          {t.locked}
-        </button>
-      ) : (
-        <Link
-          className={styles.primaryButton}
-          href={`/learning/levels/${level.level}/practice`}
-        >
-          {t.startPractice}
-        </Link>
-      )}
+      <footer className={styles.levelFooter}>
+        <p className={styles.levelFooterHint}>{t.actionHint}</p>
+
+        {isLocked ? (
+          <button className={styles.disabledButton} type="button" disabled>
+            {t.locked}
+          </button>
+        ) : (
+          <Link
+            className={styles.primaryButton}
+            href={`/learning/levels/${level.level}/practice`}
+          >
+            {t.startPractice}
+          </Link>
+        )}
+      </footer>
     </article>
   );
 }

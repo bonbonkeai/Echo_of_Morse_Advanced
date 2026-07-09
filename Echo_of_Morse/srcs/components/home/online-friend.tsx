@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { Card, Button } from "@/components/ui";
+import buttonStyles from "@/components/ui/button.module.css";
 import styles from "./online-friend.module.css";
 import { useI18n } from "@/lib/i18n";
 import { useSocket } from "@/providers/socket-provider";
@@ -267,7 +268,10 @@ export default function OnlineFriendsPreview() {
         <p className={styles.empty}>{t.noFriendsOnline}</p>
       )}
 
-      <Link href="/chat" className={styles.viewAllLink}>
+      <Link
+        href="/chat"
+        className={`${buttonStyles.button} ${buttonStyles.secondary} ${buttonStyles.sm} ${styles.viewAllButton}`}
+      >
         {t.viewAllFriends}
       </Link>
 

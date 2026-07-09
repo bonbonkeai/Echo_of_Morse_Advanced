@@ -6,7 +6,7 @@
 
 .description {
   margin: 0 0 24px 0;
-  color: #4b5563;
+  color: rgba(246, 240, 233, 0.76);
   line-height: 1.6;
 }
 
@@ -17,13 +17,13 @@
 
 .error {
   margin-top: 16px;
-  color: #b91c1c;
+  color: #ffb3b3;
   line-height: 1.5;
 }
 
 .success {
   margin-top: 16px;
-  color: #166534;
+  color: #8fe0c6;
   line-height: 1.5;
 }
 
@@ -33,5 +33,5 @@
 
 .required {
   font-weight: 700;
-  color: #b91c1c;
+  color: #ffb3b3;
 }

@@ -3,6 +3,7 @@
 
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
+import BackLink from "@/components/ui/back-link";
 import styles from "@/components/learning/css/Learning.module.css";
 
 type LearningPlayProps = {
@@ -20,9 +21,7 @@ export default function LearningPlay({
     <section className={styles.learningPage} aria-labelledby="play-title">
       <div className={styles.learningContainer}>
         <nav className={styles.breadcrumb} aria-label={t.breadcrumb}>
-          <Link className={styles.link} href="/learning">
-            {t.breadcrumbLearning}
-          </Link>
+          <BackLink href="/learning">{t.breadcrumbLearning}</BackLink>
           <span aria-hidden="true"> / </span>
           <span className={styles.breadcrumbCurrent}>{t.breadcrumbPlay}</span>
         </nav>

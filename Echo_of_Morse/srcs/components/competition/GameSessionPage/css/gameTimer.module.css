@@ -3,9 +3,9 @@
 	min-width: 96px;
 	min-height: 58px;
 	place-items: center;
-	border: 1px solid #111111;
+	border: 1px solid rgba(175, 198, 255, 0.38);
 	border-radius: 18px;
-	background: #111111;
+	background: linear-gradient(135deg, rgba(141, 183, 255, 0.94), rgba(185, 164, 255, 0.96));
 	color: #ffffff;
 	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 	font-size: 1.35rem;

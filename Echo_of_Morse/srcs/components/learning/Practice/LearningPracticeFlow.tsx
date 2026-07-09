@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { useRef, useState } from "react";
 
 import { useI18n } from "@/lib/i18n";
 import { playMorse } from "@/lib/audio";
 import PracticeSession from "./practiceSession";
 import { getLearningPreviewItems } from "./learningPreview";
+import BackLink from "@/components/ui/back-link";
 import styles from "@/components/learning/css/Learning.module.css";
 
 type LearningPracticeFlowProps = {
@@ -99,9 +99,7 @@ export default function LearningPracticeFlow({ levelId }: LearningPracticeFlowPr
   return (
     <section className={styles.learningIntro} aria-labelledby="learning-intro-title">
       <div className={styles.learningIntroHeader}>
-        <Link className={styles.link} href="/learning/levels">
-          {t.backToLevels}
-        </Link>
+        <BackLink href="/learning/levels">{t.backToLevels}</BackLink>
       </div>
 
       <div className={styles.learningIntroFrame}>

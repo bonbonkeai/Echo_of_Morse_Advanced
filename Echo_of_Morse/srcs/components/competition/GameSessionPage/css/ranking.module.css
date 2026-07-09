@@ -2,24 +2,28 @@
 	display: grid;
 	gap: 18px;
 	padding: 22px;
-	border: 1px solid #e5e5e5;
+	border: 1px solid rgba(255, 255, 255, 0.16);
 	border-radius: 24px;
-	background: #ffffff;
-	box-shadow: 0 18px 42px rgba(0, 0, 0, 0.05);
+	background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+    rgba(18, 34, 30, 0.32);
+	box-shadow:
+    0 18px 42px rgba(4, 14, 12, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
 /* ---------- tableau ranking ---------- */
 .rankingTable {
 	overflow: hidden;
-	border: 1px solid #eeeeee;
+	border: 1px solid rgba(255, 255, 255, 0.12);
 	border-radius: 18px;
-	background: #fafafa;
+	background: rgba(255, 255, 255, 0.04);
 }
 
 /* style de titre */
 .title {
 	margin: 0;
-	color: #111111;
+	color: #f7f2ec;
 	font-size: 1.2rem;
 	font-weight: 900;
 }
@@ -55,9 +59,9 @@
 
 .rankingHeader {
 	min-height: 48px;
-	border-bottom: 1px solid #eeeeee;
-	background: #f5f5f5;
-	color: #555555;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.06);
+	color: rgba(246, 240, 233, 0.72);
 	font-size: 0.78rem;
 	font-weight: 900;
 	text-transform: uppercase;
@@ -72,8 +76,8 @@
 
 .rankItem {
 	min-height: 66px;
-	border-bottom: 1px solid #eeeeee;
-	background: #ffffff;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(255, 255, 255, 0.04);
 }
 
 /*  */
@@ -82,7 +86,7 @@
 }
 
 .rankItem strong {
-	color: #111111;
+	color: #f7f2ec;
 	font-size: 1rem;
 	font-weight: 850;
 	overflow: hidden;
@@ -98,7 +102,7 @@
 }
 
 .rank {
-	color: #555555;
+	color: rgba(246, 240, 233, 0.72);
 	font-size: 1.05rem;
 	font-weight: 900;
 }
@@ -107,18 +111,18 @@
 .accuracy {
 	justify-self: end;
 	text-align: right;
-	color: #111111;
+	color: #f7f2ec;
 }
 
 .rankWinner {
-	background: #f8fff8;
+	background: rgba(143, 224, 198, 0.1);
 }
 
 .rankWinner .rank,
 .rankWinner strong,
 .rankWinner .score,
 .rankWinner .accuracy {
-	color: #0f8f40;
+	color: #8fe0c6;
 }
 
 .rankingHeader span:nth-child(3),

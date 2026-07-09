@@ -5,6 +5,7 @@ import SkipLink from "@/components/layout/skipLink";
 import AuthSessionProvider from "@/components/auth/session-provider";
 import { SocketProvider } from "@/providers/socket-provider";
 import { NotificationProvider } from "@/components/notifications/NotificationProvider";
+import Navbar from "@/components/layout/navbar";
 
 export const metadata = {
   title: "Echoes of Morse",
@@ -17,13 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
+    <html lang="zh">
       <body>
         <AuthSessionProvider>
           <SocketProvider>
             <I18nProvider>
               <NotificationProvider>
-                  <SkipLink />
+                <SkipLink />
+                <Navbar />
                 {children}
               </NotificationProvider>
             </I18nProvider>

@@ -365,6 +365,10 @@ export default function ChatLayout() {
         return;
       }
 
+      if (selectedFriendId === message.senderId) {
+        markFriendAsRead(message.senderId);
+      }
+
       setMessages((current) => {
         if (current.some((item) => item.id === message.id)) {
           return current;
@@ -402,7 +406,7 @@ export default function ChatLayout() {
     return () => {
       socket.off("chat:message:new", handleNewMessage);
     };
-  }, [socket, userId]);
+  }, [markFriendAsRead, selectedFriendId, socket, userId]);
 
   const friendsWithUnread = useMemo(
     () =>
@@ -1385,7 +1389,7 @@ export default function ChatLayout() {
     messageRequestId.current += 1;
     pendingFriendUrlSync.current = null;
     setComposerError("");
-    suppressFriendQuerySelection.current = false;
+    suppressFriendQuerySelection.current = true;
     router.replace("/chat", { scroll: false });
     setActiveConversation(null);
     setCurrentView({

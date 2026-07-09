@@ -2,9 +2,9 @@
 "use client";
 
 import { useI18n } from "@/lib/i18n";
-import Link from "next/link";
 import { RADIO_LOBBY_MAX_USERS } from "@/config/competition";
 import type { RadioConfig } from "@/types/competition";
+import BackLink from "@/components/ui/back-link";
 import styles from "@/../app/competition/radio/[radioId]/radio-lobby.module.css";
 
 type RadioHeaderProps = {
@@ -37,11 +37,9 @@ export default function RadioHeader({
   return (
     <header className={styles.header}>
       <div>
-        <Link href="/competition" className={styles.backLink}>
+        <BackLink href="/competition" className={styles.backLink}>
           {t.backToCompetition}
-        </Link>
-
-        <p className={styles.kicker}>{t.radioLobby}</p>
+        </BackLink>
         <h1 className={styles.title}>{radioName}</h1>
 
         <p className={styles.description}>

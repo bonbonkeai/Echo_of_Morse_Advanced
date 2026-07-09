@@ -32,7 +32,9 @@ export default function ChatWindow({
     <section className={styles.window}>
       <ChatHeader friend={friend} onCloseChat={onCloseChat} />
 
-      <ChatModeSelector value={chatMode} onChange={onChangeChatMode} />
+      <div className={styles.modeStrip}>
+        <ChatModeSelector value={chatMode} onChange={onChangeChatMode} />
+      </div>
 
       <MessageList messages={messages} />
 

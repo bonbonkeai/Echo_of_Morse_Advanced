@@ -321,9 +321,6 @@ export default function InviteFriendsPanel({
         </div>
       )}
 
-      <p className={styles.inviteHint}>
-        {t.inviteHint}
-      </p>
     </Card>
   );
 }

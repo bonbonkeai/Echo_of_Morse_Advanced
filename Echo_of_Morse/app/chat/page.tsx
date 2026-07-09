@@ -8,18 +8,14 @@ import ChatLayout from "@/components/chat/ChatLayout";
 import { useI18n } from "@/lib/i18n";
 
 export default function ChatPage() {
-	const { dictionary } = useI18n();
-  	const t = dictionary.chat;
+  const { dictionary } = useI18n();
+  const t = dictionary.chat;
 
   return (
     <main id="main-content">
       <PageShell>
         <Card>
           <h1 className={styles.title}>{t.pageTitle}</h1>
-
-          <p className={styles.description}>
-            {t.pageDescription}
-          </p>
 
           <Suspense fallback={null}>
             <ChatLayout />

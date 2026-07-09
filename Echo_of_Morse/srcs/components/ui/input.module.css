@@ -6,18 +6,23 @@
 .label {
   font-size: 14px;
   font-weight: 600;
-  color: #111827;
+  color: rgba(246, 240, 233, 0.92);
 }
 
 .input {
   width: 100%;
+  min-height: 44px;
   padding: 12px 14px;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  background-color: #ffffff;
-  color: #111827;
-  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.07)),
+    rgba(18, 34, 30, 0.24);
+  color: #f7f2ec;
+  font-size: 15px;
   outline: none;
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
 }
 
 .inputWrapper {
@@ -36,7 +41,7 @@
   transform: translateY(-50%);
   border: none;
   background: transparent;
-  color: #4b5563;
+  color: rgba(246, 240, 233, 0.78);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
@@ -44,46 +49,49 @@
 }
 
 .passwordToggle:hover {
-  color: #111827;
+  color: #ffffff;
 }
 
 .passwordToggle:focus-visible {
-  outline: 2px solid #111827;
+  outline: 2px solid rgba(141, 183, 255, 0.9);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 .passwordToggle:disabled {
   cursor: not-allowed;
-  color: #9ca3af;
+  color: rgba(246, 240, 233, 0.5);
 }
 
 .input:focus {
-  border-color: #111827;
+  border-color: rgba(141, 183, 255, 0.65);
+  box-shadow:
+    0 0 0 4px rgba(141, 183, 255, 0.12),
+    0 0 0 8px rgba(137, 224, 198, 0.06);
 }
 
 .input::placeholder {
-  color: #9ca3af;
+  color: rgba(246, 240, 233, 0.55);
 }
 
 .input:disabled {
   cursor: not-allowed;
-  background-color: #f3f4f6;
-  color: #6b7280;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: rgba(246, 240, 233, 0.5);
 }
 
 .inputError {
-  border-color: #b91c1c;
+  border-color: rgba(248, 113, 113, 0.7);
 }
 
 .hint {
   font-size: 13px;
   line-height: 1.4;
-  color: #6b7280;
+  color: rgba(246, 240, 233, 0.68);
 }
 
 .error {
   font-size: 13px;
   line-height: 1.4;
-  color: #b91c1c;
+  color: #ff8a8a;
 }

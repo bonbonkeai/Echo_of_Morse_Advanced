@@ -51,6 +51,10 @@ export default function DashboardGrid() {
 
   return (
     <section aria-label={t.modulesLabel}>
+      <div className={styles.hero}>
+        <h1 className={styles.title}>{t.modulesLabel}</h1>
+      </div>
+
       <div className={styles.cardGrid}>
         {cards.map((card) => (
           <DashboardCard

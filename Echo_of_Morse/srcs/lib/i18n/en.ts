@@ -13,6 +13,7 @@ const en = {
 		levelPrefix: "Level",
 		friends: "Friends",
 		joined: "Joined",
+		backToLearning: "Back to learning",
 		//------- oauth ------- 
 		connectedAccounts: "Linked accounts",
 		notConnected: "Not linked",
@@ -87,7 +88,7 @@ const en = {
 	},
 
 	dashboard: {
-		modulesLabel: "Dashboard modules",
+		modulesLabel: "Home modules",
 
 		openModule: "Open module →",
 
@@ -104,6 +105,19 @@ const en = {
 	home: {
 		onlineNow: "Online now",
 		usersConnected: "{count} users connected",
+
+		heroEyebrow: "Morse learning studio",
+		heroTitle: "Echoes of Morse",
+		heroLead: "From first drills to live matches, everything flows through one workspace.",
+		heroPrimaryAction: "Start learning",
+		heroSecondaryAction: "Enter competition",
+		signalPreviewLabel: "Signal preview",
+		signalPreviewTitle: "Learning, chat, and radio matches",
+		signalPreviewDescription: "Signals, progress, and match state stay in sync.",
+		heroPillOne: "Spaced repetition",
+		heroPillTwo: "Realtime chat",
+		heroPillThree: "Radio lobbies",
+		heroPillFour: "Friend status",
 
 		introTitle: "A Project of Morse?",
 		introDescription: "Morse code becomes here a way to learn signals, rhythm, communication, and interaction.",
@@ -238,6 +252,7 @@ const en = {
 		
 		//------------------ app/learning/levels/page.tsx ------------------
 		levelsPageDescription: "The path covers letters, numbers, and punctuation. Each level uses mixed practice: sometimes you decode Morse signals, sometimes you encode characters with the keyboard.",
+		backToLearning: "Back to learning",
 		breadcrumbLearning: "Learning",
 		breadcrumbLevels: "Levels",
 
@@ -250,6 +265,10 @@ const en = {
 		newCharacters: "New characters",
 		questions: "Questions",
 		pass: "Pass requirement",
+		reviewFrom: "Review from",
+		newRatio: "New characters",
+		reviewRatio: "Review characters",
+		actionHint: "Start practice for this level",
 		locked: "Locked",
 		startPractice: "Start practice",
 
@@ -808,7 +827,7 @@ const en = {
 
 	competitionRadio: {
 		//--------- RadioHeader.tsx ---------
-		backToCompetition: "← Back to Competition",
+		backToCompetition: "Back to Competition",
 		radioLobby: "Radio Lobby",
 		lobbyDescription: "{description} Players in this lobby can join the ready queue and start a real-time Morse decoding session together.",
 		radioInformation: "Radio information",

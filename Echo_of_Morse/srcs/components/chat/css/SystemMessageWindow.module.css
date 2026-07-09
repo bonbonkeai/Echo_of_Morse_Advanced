@@ -5,7 +5,9 @@
   min-height: 0;
   height: 100%;
   overflow: hidden;
-  background: #ffffff;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 248, 0.06), rgba(255, 252, 248, 0.03)),
+    rgba(18, 34, 30, 0.16);
 }
 
 .header {
@@ -14,20 +16,20 @@
   justify-content: space-between;
   gap: 16px;
   padding: 18px 20px;
-  border-bottom: 1px solid #e5e7eb;
-  background: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .title {
   margin: 0;
-  color: #111827;
+  color: #f7f2ec;
   font-size: 20px;
   font-weight: 800;
 }
 
 .subtitle {
   margin: 4px 0 0 0;
-  color: #6b7280;
+  color: rgba(246, 240, 233, 0.72);
   font-size: 13px;
   line-height: 1.5;
 }
@@ -37,24 +39,24 @@
   place-items: center;
   width: 32px;
   height: 32px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
-  background: #ffffff;
-  color: #111827;
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
   cursor: pointer;
   font-size: 22px;
   line-height: 1;
 }
 
 .closeButton:hover {
-  background: #f3f4f6;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .body {
   min-width: 0;
   min-height: 0;
   overflow: hidden;
-  background: #f3f4f6;
+  background: rgba(10, 20, 17, 0.12);
 }
 
 .list {
@@ -67,7 +69,7 @@
   overflow-x: hidden;
   margin: 0;
   padding: 20px;
-  background: #f3f4f6;
+  background: transparent;
   list-style: none;
   scrollbar-gutter: stable;
   overscroll-behavior: contain;
@@ -78,29 +80,29 @@
 }
 
 .list::-webkit-scrollbar-track {
-  background: #e5e7eb;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .list::-webkit-scrollbar-thumb {
-  border: 2px solid #e5e7eb;
+  border: 2px solid rgba(255, 255, 255, 0.08);
   border-radius: 999px;
-  background: #9ca3af;
+  background: rgba(255, 255, 255, 0.28);
 }
 
 .list::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
+  background: rgba(255, 255, 255, 0.38);
 }
 
 .item {
   padding: 14px;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  background: #ffffff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .unread {
-  border-color: #111827;
+  border-color: rgba(175, 198, 255, 0.36);
 }
 
 .read {
@@ -121,20 +123,20 @@
 
 .itemTitle {
   margin: 0;
-  color: #111827;
+  color: #f7f2ec;
   font-size: 15px;
   font-weight: 800;
 }
 
 .time {
   flex-shrink: 0;
-  color: #6b7280;
+  color: rgba(246, 240, 233, 0.62);
   font-size: 12px;
 }
 
 .messageBody {
   margin: 8px 0 0 0;
-  color: #4b5563;
+  color: rgba(246, 240, 233, 0.76);
   font-size: 14px;
   line-height: 1.6;
 }
@@ -142,7 +144,7 @@
 .empty {
   margin: 0;
   padding: 20px;
-  color: #6b7280;
+  color: rgba(246, 240, 233, 0.68);
   font-size: 14px;
   line-height: 1.6;
 }
@@ -177,25 +179,23 @@
 }
 
 .acceptButton {
-  border: 1px solid #111827;
-  background: #111827;
+  border: 1px solid rgba(175, 198, 255, 0.38);
+  background: linear-gradient(135deg, rgba(141, 183, 255, 0.92), rgba(185, 164, 255, 0.94));
   color: #ffffff;
 }
 
 .acceptButton:hover {
-  background: #000000;
   transform: translateY(-1px);
 }
 
 .declineButton {
-  border: 1px solid #d1d5db;
-  background: #ffffff;
-  color: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
 }
 
 .declineButton:hover {
-  border-color: #9ca3af;
-  background: #f9fafb;
+  background: rgba(255, 255, 255, 0.09);
   transform: translateY(-1px);
 }
 
@@ -213,21 +213,21 @@
 }
 
 .acceptedBadge {
-  background: #dcfce7;
-  color: #166534;
+  background: rgba(143, 224, 198, 0.2);
+  color: #d8fff1;
 }
 
 .declinedBadge {
-  background: #fee2e2;
-  color: #991b1b;
+  background: rgba(255, 145, 145, 0.18);
+  color: #ffd6d6;
 }
 
 .pendingBadge {
-  background: #fef3c7;
-  color: #92400e;
+  background: rgba(255, 220, 155, 0.18);
+  color: #ffe9bf;
 }
 
 .errorBadge {
-  background: #fee2e2;
-  color: #991b1b;
+  background: rgba(255, 145, 145, 0.18);
+  color: #ffd6d6;
 }

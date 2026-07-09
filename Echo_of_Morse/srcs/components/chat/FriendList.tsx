@@ -7,6 +7,7 @@
 // 4. Invite friend to game.
 
 import type { ChangeEvent } from "react";
+import { useState } from "react";
 import type { Friend, SearchableUser, SystemMessage } from "@/types/chat";
 import { Button, Input } from "@/components/ui";
 import FriendListItem from "./FriendListItem";
@@ -72,15 +73,25 @@ export default function FriendList({
   const { dictionary } = useI18n();
   const t = dictionary.chat;
   const radioT = dictionary.competitionRadio;
+  const [contextMenuState, setContextMenuState] = useState<{
+    friendId: string;
+  } | null>(null);
 
   const latestSystemMessage = systemMessages[0] ?? null;
-
   function handleFriendSearchChange(event: ChangeEvent<HTMLInputElement>) {
     onChangeFriendSearchQuery(event.target.value);
   }
 
   function handleUserSearchChange(event: ChangeEvent<HTMLInputElement>) {
     onChangeUserSearchQuery(event.target.value);
+  }
+
+  function handleRequestContextMenu(friendId: string) {
+    setContextMenuState({ friendId });
+  }
+
+  function handleCloseContextMenu() {
+    setContextMenuState(null);
   }
 
   return (
@@ -204,9 +215,12 @@ export default function FriendList({
                 isGameInvitePending={isGameInvitePending}
                 inviteDisabledReason={inviteDisabledReasons[friend.id] ?? null}
                 onSelectFriend={onSelectFriend}
+                onInviteFriendToGame={onInviteFriendToGame}
+                onRequestContextMenu={handleRequestContextMenu}
+                activeContextMenuFriendId={contextMenuState?.friendId ?? null}
+                onCloseContextMenu={handleCloseContextMenu}
                 onRenameFriend={onRenameFriend}
                 onDeleteFriend={onDeleteFriend}
-                onInviteFriendToGame={onInviteFriendToGame}
               />
             );
           })
@@ -214,6 +228,7 @@ export default function FriendList({
           <p className={styles.empty}>{t.noFriendsFound}</p>
         )}
       </div>
+
     </aside>
   );
 }

@@ -8,16 +8,12 @@ import { useEffect } from "react";
 import styles from "./css/FriendContextMenu.module.css";
 
 type FriendContextMenuProps = {
-  x: number;
-  y: number;
   onClose: () => void;
   onRename: () => void;
   onDelete: () => void;
 };
 
 export default function FriendContextMenu({
-  x,
-  y,
   onClose,
   onRename,
   onDelete,
@@ -26,7 +22,7 @@ export default function FriendContextMenu({
 	const t = dictionary.chat;
 
   useEffect(() => {
-    function handleClick() {
+    function handlePointerDown() {
       onClose();
     }
 
@@ -36,11 +32,11 @@ export default function FriendContextMenu({
       }
     }
 
-    window.addEventListener("click", handleClick);
+    window.addEventListener("pointerdown", handlePointerDown);
     window.addEventListener("keydown", handleEscape);
 
     return () => {
-      window.removeEventListener("click", handleClick);
+      window.removeEventListener("pointerdown", handlePointerDown);
       window.removeEventListener("keydown", handleEscape);
     };
   }, [onClose]);
@@ -48,12 +44,8 @@ export default function FriendContextMenu({
   return (
     <div
       className={styles.menu}
-      style={{
-        left: x,
-        top: y,
-      }}
       role="menu"
-      onClick={(event) => event.stopPropagation()}
+      onPointerDown={(event) => event.stopPropagation()}
     >
       <button type="button" onClick={onRename} className={styles.item}>
         {t.renameRemark}

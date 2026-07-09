@@ -16,8 +16,7 @@ export default function ChatModeSelector({
 }: ChatModeSelectorProps) {
 	const { dictionary } = useI18n();
 	const t = dictionary.chat;
-	const modes = 
-	[
+	const modes = [
 		{ value: "LANGUAGE_TO_MORSE", label: t.languageToMorse },
 		{ value: "morse-to-language", label: t.morseToLanguage },
 		{ value: "LANGUAGE_ONLY", label: t.textOnly },
@@ -34,6 +33,7 @@ export default function ChatModeSelector({
           size="sm"
           variant={value === mode.value ? "primary" : "secondary"}
           onClick={() => onChange(mode.value)}
+          className={styles.modeButton}
         >
           {mode.label}
         </Button>
